@@ -1,0 +1,39 @@
+h1 {
+    color: #b41b1b
+}
+
+h2 {
+    color: #b41b1b
+}
+
+h3 {
+    color: #b41b1b
+}
+
+h4 {
+    color: #b41b1b
+}
+
+h5 {
+    color: #b41b1b
+}
+
+h6 {
+    color: #b41b1b
+}
+
+p {
+    color: #05400e;
+    text-align: justify;
+    /*text-align: right;*/
+}
+
+span {
+    color: yellow;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+    background-color: blue;
+}
