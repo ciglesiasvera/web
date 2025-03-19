@@ -37,3 +37,8 @@ span {
 body {
     background-color: blue;
 }
+
+img {
+    width: 300px;
+    height: 200px;
+}
