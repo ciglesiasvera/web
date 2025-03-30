@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de 100 Selectores CSS3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de 100 Selectores CSS3</h1>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Selector</th>
+            <th>Descripción</th>
+        </tr>
+        <tr><td>1</td><td>*</td><td>Selecciona todos los elementos</td></tr>
+        <tr><td>2</td><td>elemento</td><td>Selecciona todas las etiquetas de ese tipo</td></tr>
+        <tr><td>3</td><td>#id</td><td>Selecciona un elemento por su ID</td></tr>
+        <tr><td>4</td><td>.clase</td><td>Selecciona todos los elementos con esa clase</td></tr>
+        <tr><td>5</td><td>elemento1, elemento2</td><td>Selecciona múltiples elementos</td></tr>
+        <tr><td>6</td><td>elemento elemento</td><td>Selecciona descendientes directos</td></tr>
+        <tr><td>7</td><td>elemento > elemento</td><td>Selecciona solo los hijos directos</td></tr>
+        <tr><td>8</td><td>elemento + elemento</td><td>Selecciona el siguiente hermano inmediato</td></tr>
+        <tr><td>9</td><td>elemento ~ elemento</td><td>Selecciona todos los hermanos siguientes</td></tr>
+        <tr><td>10</td><td>[atributo]</td><td>Selecciona elementos con un atributo específico</td></tr>
+        <!--Agrega los selectores detallados en la lista que se encuentra comentada, más abajo, en este archivo-->
+        <tr><td>...</td><td>...</td><td>...</td></tr>
+        <tr><td>99</td><td>:checked</td><td>Selecciona elementos marcados (checkbox, radio)</td></tr>
+        <tr><td>100</td><td>:target</td><td>Selecciona el elemento objetivo de un enlace</td></tr>
+    </table>
+</body>
+</html>
+
+<!--
+1. Selectores Básicos 
+* → Todos los elementos
+
+elemento → Todos los elementos de ese tipo (p { color: red; })
+
+.clase → Elementos con una clase específica (.boton { color: blue; })
+
+#id → Elemento con un ID específico (#menu { background: black; })
+
+elemento1, elemento2 → Selección múltiple (h1, h2 { font-weight: bold; })
+
+elemento1 elemento2 → Descendientes (div p { color: gray; })
+
+elemento1 > elemento2 → Hijos directos (div > p { color: green; })
+
+elemento1 + elemento2 → Hermano inmediato (h1 + p { font-size: 18px; })
+
+elemento1 ~ elemento2 → Hermanos generales (h1 ~ p { color: purple; })
+
+[atributo] → Elementos con un atributo ([disabled] { opacity: 0.5; })
+
+2. Selectores de Atributo 
+[atributo="valor"] → Atributo con valor exacto (input[type="text"])
+
+[atributo~="valor"] → Valor dentro de una lista separada por espacios ([title~="mapa"])
+
+[atributo|="valor"] → Atributo con valor exacto o seguido de guion ([lang|="es"])
+
+[atributo^="valor"] → Atributo que empieza con valor ([href^="https"])
+
+[atributo$="valor"] → Atributo que termina con valor ([src$=".png"])
+
+[atributo*="valor"] → Atributo que contiene el valor ([class*="boton"])
+
+:root → Elemento raíz del documento
+
+::selection → Estilo al seleccionar texto
+
+::before → Pseudo-elemento antes del contenido
+
+::after → Pseudo-elemento después del contenido
+
+3. Selectores de Estructura 
+:first-child → Primer hijo
+
+:last-child → Último hijo
+
+:nth-child(n) → Hijo número "n"
+
+:nth-last-child(n) → Hijo "n" desde el final
+
+:only-child → Único hijo
+
+:first-of-type → Primer elemento de su tipo
+
+:last-of-type → Último elemento de su tipo
+
+:nth-of-type(n) → "n"-ésimo de su tipo
+
+:nth-last-of-type(n) → "n"-ésimo desde el final
+
+:only-of-type → Único de su tipo
+
+4. Selectores de Estado 
+:empty → Elementos sin contenido
+
+:not(selector) → Excluye elementos
+
+:hover → Cuando el usuario pasa el cursor
+
+:focus → Cuando un elemento tiene el foco
+
+:checked → Elementos marcados (input[type="checkbox"]:checked)
+
+:enabled → Elementos habilitados (input:enabled)
+
+:disabled → Elementos deshabilitados (input:disabled)
+
+:required → Elemento obligatorio (input:required)
+
+:optional → Elemento opcional
+
+:valid → Campo de formulario con datos válidos
+
+5. Selectores de Formularios 
+:invalid → Campo con datos incorrectos
+
+:in-range → Valor dentro del rango permitido
+
+:out-of-range → Valor fuera del rango
+
+:read-only → Elemento solo lectura
+
+:read-write → Elemento editable
+
+::placeholder → Texto de sugerencia en input
+
+::first-line → Primera línea de un bloque de texto
+
+::first-letter → Primera letra de un texto
+
+::marker → Estilo a viñetas de listas
+
+::backdrop → Fondo de un modal
+
+6. Selectores Avanzados 
+:target → Elemento anclado en la URL
+
+:lang(es) → Elementos con idioma específico
+
+::shadow → Estilos en elementos Shadow DOM
+
+:default → Elemento preseleccionado
+
+:fullscreen → Elemento en pantalla completa
+
+:checked + label → Estilo cuando un input está marcado
+
+:focus-within → Cuando un hijo recibe foco
+
+:focus-visible → Similar a :focus, pero solo en teclado
+
+:dir(rtl) → Estilos basados en dirección del texto
+
+:nth-match(n, selector) → Selecciona el "n"-ésimo elemento de un conjunto
+
+7. Selectores Combinados 
+div:not(.excluir) → Todos los div excepto .excluir
+
+h1, h2, h3 → Agrupación de selectores
+
+input[type="radio"]:checked + label → Estilo en etiqueta de radio seleccionado
+
+input:focus ~ label → Estilos en elementos hermanos
+
+div > span > a → Hijos directos en jerarquía
+
+ul > li:first-child → Primer li dentro de ul
+
+div:not(:last-child) → Todos menos el último
+
+td:nth-child(even) → Columnas pares
+
+tr:nth-child(odd) → Filas impares
+
+p:nth-child(3n+1) → Cada tercer p
+
+8. Selectores de Media Queries 
+@media (max-width: 600px) → Estilos en pantallas pequeñas
+
+@media (min-width: 1024px) → Estilos en pantallas grandes
+
+@media (orientation: landscape) → Dispositivos en horizontal
+
+@media (hover: hover) → Dispositivos que soportan hover
+
+@media (prefers-color-scheme: dark) → Modo oscuro
+
+@supports (display: grid) → Comprobar soporte de propiedades
+
+@page → Estilos para impresión
+
+@font-face → Definir fuentes personalizadas
+
+@keyframes → Definir animaciones
+
+@import → Importar archivos CSS
+
+9. Selectores de Grid y Flexbox 
+display: flex → Habilitar Flexbox
+
+justify-content: center → Alinear al centro
+
+align-items: flex-start → Alinear en eje transversal
+
+flex-grow: 1 → Permitir crecimiento
+
+grid-template-columns: repeat(3, 1fr) → Crear columnas de Grid
+
+grid-template-rows: auto 1fr auto → Definir filas
+
+gap: 10px → Espaciado entre elementos
+
+place-items: center → Centrar elementos
+
+grid-area → Asignar elementos a una cuadrícula
+
+flex-wrap: wrap → Permitir salto de línea
+
+10. Selectores de Animaciones
+animation-name → Nombre de la animación
+
+animation-duration → Duración
+
+animation-timing-function → Velocidad
+
+animation-delay → Retraso
+
+animation-iteration-count → Repeticiones
+
+animation-direction → Dirección
+
+animation-fill-mode → Estado inicial/final
+
+animation-play-state → Pausa/reanuda
+
+transition → Animaciones suaves
+
+transform → Transformaciones
+-->
