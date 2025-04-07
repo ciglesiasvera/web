@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.box {
+    width: 200px;
+    padding: 20px;
+    border: 10px solid #000;
+    margin: 20px;
+    background-color: #f0f0f0; /* Color del contenido */
+    text-align: center;
+    box-shadow: 0 0 0 5px #ff0000; /* Color del margen */
+}
+
+.content-box {
+    box-sizing: content-box;
+    background-clip: content-box; /* Asegura que el color de fondo solo afecte al contenido */
+    padding: 20px;
+    border: 10px dashed #00f; /* Color y estilo del borde */
+}
+
+.border-box {
+    box-sizing: border-box;
+    background-clip: padding-box; /* Asegura que el color de fondo incluya el padding */
+    padding: 20px;
+    border: 10px dotted #0f0; /* Color y estilo del borde */
+}

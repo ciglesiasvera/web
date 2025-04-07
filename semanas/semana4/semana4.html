@@ -1,0 +1,170 @@
+<!--
+
+SESIÓN 1
+El Modelo de Cajas (Box Model)
+Contenido Conceptual:
+
+Conceptos Fundamentales del Box Model en CSS:
+El Box Model define cómo se calculan las dimensiones de los elementos en CSS.
+
+Propiedades Clave:
+width y height: Definen el tamaño del contenido del elemento.
+padding: Espacio entre el contenido y el borde del elemento.
+border: Borde que rodea el padding (si existe).
+margin: Espacio exterior al borde, que separa el elemento de otros elementos.
+
+Diferencias entre content-box y border-box:
+content-box: El ancho y alto especificados solo incluyen el contenido. El padding y el borde se añaden alrededor 
+del contenido.
+border-box: El ancho y alto especificados incluyen el contenido, el padding y el borde.
+
+Content-Box
+Qué es:
+
+Content-box como una caja donde solo cuentas el espacio interior donde pones tus cosas.
+
+Cómo funciona:
+Por ejemplo, si quieres una caja que mida 20 cm de ancho y 20 cm de alto para tus cosas.
+
+Con content-box, esos 20 cm solo miden el espacio interior donde van las cosas.
+Si añades un borde grueso o un relleno (padding) alrededor de las cosas dentro de la caja, 
+esos extras se suman al tamaño total de la caja.
+
+Entonces, si añades 5 cm de relleno y un borde de 2 cm, tu caja total medirá 
+20 cm + 5 cm + 2 cm = 27 cm de ancho y alto.
+
+Border-Box
+Qué es:
+
+Border-box es como una caja donde cuentas todo: el espacio interior para tus cosas, el relleno 
+y el borde.
+
+Cómo funciona:
+
+Por ejemplo, si quieres una caja que mida 20 cm de ancho y 20 cm de alto para tus cosas, 
+con border-box, esos 20 cm incluyen todo: el espacio para las cosas, el relleno y el borde.
+Entonces, si añades 5 cm de relleno y un borde de 2 cm, esos se restan del espacio interior 
+para las cosas.
+
+El espacio interior para las cosas será 20 cm - 5 cm - 2 cm = 13 cm de ancho y alto.
+
+Resumen
+Content-Box: Solo mide el espacio interior. Cualquier relleno o borde se añade al tamaño total.
+Border-Box: Mide todo junto. El tamaño total incluye el espacio interior, el relleno y el borde.
+
+Usar border-box es como decir: "Quiero una caja que, con todo incluido, mida 20 cm." 
+Mientras que content-box es como decir: "Quiero que el espacio para mis cosas mida 20 cm, y luego 
+veré cuánto más grande se vuelve la caja con el relleno y el borde."
+
+Actividad Práctica:
+Objetivo: Maquetar elementos HTML simples y aplicar propiedades del Box Model.
+
+Pasos:
+Crear un archivo HTML con varios elementos <div>.
+Aplicar diferentes valores a width, height, padding, border, y margin para observar cómo afectan el diseño.
+Utilizar las DevTools del navegador para inspeccionar y ajustar el Box Model de los elementos.
+Alcanzar dimensiones específicas o espaciamientos particulares utilizando las propiedades del Box Model.
+
+Enlace: https://www.w3schools.com/css/css_boxmodel.asp  (Box Model)
+
+=================================================================================
+
+SESIÓN 2
+Introducción a JavaScript: Sintaxis Básica y Tipos de Datos
+
+Propósito e Importancia de JavaScript:
+JavaScript es esencial para agregar interactividad y dinamismo a las páginas web.
+
+Fundamentos de la Sintaxis Básica:
+Declaraciones y Expresiones: Cómo escribir instrucciones en JavaScript.
+
+Variables: Declaración (var, let, const) y asignación de valores.
+
+Operadores:
+Aritméticos: +, -, *, /, %.
+Comparación: ==, ===, !=, !==, >, <, >=, <=.
+Lógicos: &&, ||, !.
+Condicionales: Uso de if, else if, else para controlar el flujo del programa.
+
+Tipos de Datos Primitivos:
+number: Números enteros y de punto flotante.
+string: Cadenas de texto.
+boolean: Valores verdadero o falso.
+null: Valor nulo intencional.
+undefined: Valor no asignado.
+
+Demostración:
+Calculadora Básica en la Consola del Navegador:
+Calculadora simple que realice operaciones básicas (suma, resta, multiplicación, división) utilizando JavaScript.
+Se utilizará console.log() para mostrar los resultados en la consola del navegador.
+
+3. Actividades Prácticas en CodePen
+
+Objetivo:
+Aplicar los conceptos aprendidos en JavaScript mediante ejercicios prácticos.
+
+Actividades:
+Ejercicios de Programación:
+Determinar si un número es par o impar.
+Realizar operaciones aritméticas basadas en condiciones (por ejemplo, sumar dos números si ambos son positivos).
+Utilizar console.log() para depurar y verificar los resultados.
+
+¿Qué es console.log()?
+console.log() es como un pequeño altavoz que sirve para saber lo que está haciendo tu código en cada paso.
+Cuando programas, a veces tu código no hace lo que esperas. console.log() te ayuda a ver qué está pasando 
+dentro de tu programa, paso a paso.
+
+Cómo Usar console.log()
+Abrir la Consola del Navegador:
+Para abrir la consola, presiona F12 o Ctrl+Shift+I en tu teclado mientras estás en una página web. 
+Luego, selecciona la pestaña que dice "Console".
+Escribir Mensajes:
+
+Se pueden imprimir mensajes en la consola usando console.log().
+Por ejemplo, "¡Hola Temuco!", puedes escribir:
+
+console.log("¡Hola Temuco!");
+
+Depurar Cálculos:
+Si estás realizando una suma, y quieres asegurarte de que se está realizando bien.
+Puedes verificar el resultado de la suma:
+
+let numero1 = 5;
+let numero2 = 3;
+let resultado = numero1 + numero2;
+console.log("El resultado de la suma es: " + resultado);
+En la consola, verás: "El resultado de la suma es: 8".
+
+Verificar Errores:
+Puedes verificar un error, usando console.log() para ver dónde dónde está.
+Por ejemplo, si deseas multiplicar dos n¿umeros pero por error estás sumando, puedes verificarlo:
+
+let numero1 = 5;
+let numero2 = 3;
+let resultado = numero1 * numero2; // Aquí debería ser * para multiplicar
+console.log("El resultado de la multiplicación es: " + resultado);
+
+Si ves un resultado incorrecto en la consola, sabrás que necesitas arreglar algo en tu código.
+
+Ejemplo
+
+// Operación matemática
+let numero1 = 10;
+let numero2 = 4;
+let suma = numero1 + numero2;
+
+// Usamos console.log() para ver el resultado
+console.log("La suma de " + numero1 + " y " + numero2 + " es: " + suma);
+
+Resumen
+console.log() es una herramienta que ayuda a ver lo que está pasando dentro de un programa.
+Es como un altavoz que sirve para revisar los procesos y resultados.
+Ayuda a encontrar y arreglar errores en el código.
+
+Plataforma:
+CodePen o plataformas similares para escribir y probar el código JavaScript.
+Recursos Complementarios:
+Revisar recursos como Codecademy para aprender más sobre JavaScript.
+https://www.codecademy.com/learn/introduction-to-javascript
+https://www.w3schools.com/js/
+-->
