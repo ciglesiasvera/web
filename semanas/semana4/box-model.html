@@ -4,11 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejemplo del Box Model</title>
-    <link rel="stylesheet" href="../../assets/css/box-model.css">
+    <link rel="stylesheet" href="../../assets/css/semanas/semana4/style.css">
+    <link rel="stylesheet" href="../../assets/css/semanas/semana4/box-model.css">
 </head>
 <body>
-    <h1>Ejemplo del Box Model en CSS</h1>
-    <div class="box content-box">Box Model con content-box</div>
-    <div class="box border-box">Box Model con border-box</div>
+    <header>
+        <h1>Desarrollo y Diseño Web + IA</h1>
+        <nav>
+            <ul>
+              <li><a href="../../index.html">Inicio</a></li>
+              <li>
+              <a href="#">Semana 3 ▾</a>
+                <ul>
+                  <li><a href="../semana3/index.html">Resumen Semana 3</a></li>
+                  <li><a href="../semana3/htmltags.html">HTML Tags</a></li>
+                  <li><a href="../semana3/selectorescss.html">Selectores CSS</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Semana 4 ▾</a>
+                <ul>
+                  <li><a href="index.html">Resumen Semana 4</a></li>
+                  <li><a href="calculator.html">Calculadora JS</a></li>
+                  <li><a href="oddoreven.html">Par o Impar</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Semana 5 ▾</a>
+                <ul>
+                  <li><a href="../semana5/index.html">Resumen Semana 5</a></li>
+                  <li><a href="../semana5/dom.html">Manipulación del DOM</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+    </header>
+    <main>
+        <h2>Ejemplo del Box Model en CSS</h2>
+        <section>
+            <p>A continuación se muestran dos ejemplos del Box Model con diferentes configuraciones:</p>
+            <div class="box content-box">Box Model con content-box</div>
+            <div class="box border-box">Box Model con border-box</div>
+            
+            <h3>Explicación</h3>
+            <p>Ambas cajas tienen las mismas propiedades declaradas:</p>
+            <ul>
+                <li>width: 200px</li>
+                <li>padding: 20px</li>
+                <li>border: 10px</li>
+                <li>margin: 20px</li>
+            </ul>
+            <p>Sin embargo, la diferencia está en cómo se calcula el tamaño final:</p>
+            <ul>
+                <li><strong>content-box:</strong> El ancho total es 200px (contenido) + 40px (padding) + 20px (border) = 260px</li>
+                <li><strong>border-box:</strong> El ancho total es 200px, que incluye contenido (140px) + padding (40px) + border (20px)</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Diseño y Desarrollo Web + IA - TEC UCT - Docente: Cristian Iglesias Vera - cristian.iglesias@uct.cl</p>
+    </footer>
 </body>
 </html>

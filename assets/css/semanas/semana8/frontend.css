@@ -1,0 +1,81 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f7f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header, .navbar {
+  background-color: #009688 !important;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+.navbar-dark .navbar-brand, 
+.navbar-dark .nav-link {
+  color: white !important;
+  font-weight: bold;
+}
+
+.navbar-dark .nav-link:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.container {
+  padding: 2em;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.card, .form-container, #postContainer {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  color: #00695c;
+}
+
+h3 {
+  color: #00796b;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.5em;
+}
+
+.btn-primary {
+  background-color: #009688 !important;
+  border-color: #00897b !important;
+}
+
+.btn-primary:hover {
+  background-color: #00796b !important;
+  border-color: #00695c !important;
+}
+
+.btn-outline-primary {
+  color: #009688 !important;
+  border-color: #009688 !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: #009688 !important;
+  color: white !important;
+}
+
+.badge.bg-primary {
+  background-color: #009688 !important;
+}
+
+.post-content {
+  line-height: 1.6;
+}
+
+.form-control:focus {
+  border-color: #26a69a;
+  box-shadow: 0 0 0 0.25rem rgba(38, 166, 154, 0.25);
+}

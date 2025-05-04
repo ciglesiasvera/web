@@ -4,13 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio Par o Impar</title>
+    <link rel="stylesheet" href="../../assets/css/semanas/semana4/style.css">
 </head>
 <body>
-    <h1>Verificar si un Número es Par o Impar</h1>
-    <input type="number" id="numero" placeholder="Ingresa un número">
-    <button onclick="verificarParImpar()">Verificar</button>
-    <p id="resultado"></p>
+    <header>
+        <h1>Desarrollo y Diseño Web + IA</h1>
+        <nav>
+            <ul>
+              <li><a href="../../index.html">Inicio</a></li>
+              <li>
+              <a href="#">Semana 3 ▾</a>
+                <ul>
+                  <li><a href="../semana3/index.html">Resumen Semana 3</a></li>
+                  <li><a href="../semana3/htmltags.html">HTML Tags</a></li>
+                  <li><a href="../semana3/selectorescss.html">Selectores CSS</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Semana 4 ▾</a>
+                <ul>
+                  <li><a href="index.html">Resumen Semana 4</a></li>
+                  <li><a href="box-model.html">Box Model</a></li>
+                  <li><a href="calculator.html">Calculadora JS</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Semana 5 ▾</a>
+                <ul>
+                  <li><a href="../semana5/index.html">Resumen Semana 5</a></li>
+                  <li><a href="../semana5/dom.html">Manipulación del DOM</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+    </header>
+    <main>
+        <h2>Verificar si un Número es Par o Impar</h2>
+        <section>
+            <p>Este ejercicio utiliza JavaScript para determinar si un número es par o impar.</p>
+            
+            <div class="contenedor">
+                <input type="number" id="numero" placeholder="Ingresa un número">
+                <button onclick="verificarParImpar()">Verificar</button>
+                <p id="resultado"></p>
+            </div>
+            
+            <h3>¿Cómo funciona?</h3>
+            <p>Un número es par si al dividirlo por 2, el resto (o módulo) es 0. Si el resto es 1, el número es impar.</p>
+            
+            <h3>Código JavaScript</h3>
+            <pre><code>function verificarParImpar() {
+    // Obtener el valor ingresado
+    const numero = parseInt(document.getElementById("numero").value);
+    const resultado = document.getElementById("resultado");
+    
+    // Verificar si es un número válido
+    if (isNaN(numero)) {
+        resultado.textContent = "Por favor, ingresa un número válido.";
+        return;
+    }
+    
+    // Verificar si es par o impar
+    if (numero % 2 === 0) {
+        resultado.textContent = numero + " es un número PAR.";
+    } else {
+        resultado.textContent = numero + " es un número IMPAR.";
+    }
+}</code></pre>
+        </section>
+    </main>
 
-    <script src="../../assets/js/oddoreven.js"></script>
+    <footer>
+        <p>&copy; 2025 Diseño y Desarrollo Web + IA - TEC UCT - Docente: Cristian Iglesias Vera - cristian.iglesias@uct.cl</p>
+    </footer>
+
+    <script>
+        function verificarParImpar() {
+            // Obtener el valor ingresado
+            const numero = parseInt(document.getElementById("numero").value);
+            const resultado = document.getElementById("resultado");
+            
+            // Verificar si es un número válido
+            if (isNaN(numero)) {
+                resultado.textContent = "Por favor, ingresa un número válido.";
+                return;
+            }
+            
+            // Verificar si es par o impar
+            if (numero % 2 === 0) {
+                resultado.textContent = numero + " es un número PAR.";
+            } else {
+                resultado.textContent = numero + " es un número IMPAR.";
+            }
+        }
+    </script>
 </body>
 </html>

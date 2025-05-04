@@ -1,0 +1,110 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+
+  header, footer {
+    background-color: #009688;
+    color: white;
+    padding: 1em;
+    text-align: center;
+  }
+
+  nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  main {
+    padding: 2em;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5em;
+    margin-bottom: 1.5em;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    color: #00695c;
+  }
+
+  .img-centrada {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    height: auto;
+  }
+
+  code {
+    background-color: #eef;
+    padding: 0.2em 0.5em;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+
+  ul {
+    padding-left: 1.2em;
+  }
+
+  aside {
+    background-color: #e0f2f1;
+    border-left: 5px solid #00796b;
+    padding: 1em;
+    margin-top: 1em;
+  }
+
+  footer p {
+    margin: 0;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+   /* Estilos para el menú desplegable */
+nav ul ul {
+    display: none;
+    position: absolute;
+    background-color: #009688;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 0;
+  }
+  
+  nav ul li:hover > ul {
+    display: block;
+  }
+  
+  nav ul ul li {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+  
+  nav ul ul li a {
+    padding: 12px 16px;
+    display: block;
+  }
+  
+  nav ul li {
+    position: relative;
+  }

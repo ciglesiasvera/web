@@ -1,0 +1,199 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header, footer {
+    background-color: #009688;
+    color: white;
+    padding: 1em;
+    text-align: center;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  main {
+    padding: 2em;
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5em;
+    margin-bottom: 1.5em;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  h2 {
+    color: #00695c;
+  }
+  
+  h3 {
+    color: #00796b;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0.5em;
+  }
+  
+  h4 {
+    color: #00897b;
+  }
+  
+  code {
+    background-color: #eef;
+    padding: 0.2em 0.5em;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+  
+  pre {
+    background-color: #f5f5f5;
+    padding: 1em;
+    border-radius: 5px;
+    overflow-x: auto;
+  }
+  
+  ul {
+    padding-left: 1.2em;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Estilos para el menú desplegable */
+  nav ul ul {
+    display: none;
+    position: absolute;
+    background-color: #009688;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 0;
+  }
+  
+  nav ul li:hover > ul {
+    display: block;
+  }
+  
+  nav ul ul li {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+  
+  nav ul ul li a {
+    padding: 12px 16px;
+    display: block;
+  }
+  
+  nav ul li {
+    position: relative;
+  }
+  
+  /* Estilos para tablas */
+  .tabla-seo, .tabla-checklist {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+  }
+  
+  .tabla-seo th, .tabla-seo td,
+  .tabla-checklist th, .tabla-checklist td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .tabla-seo th, .tabla-checklist th {
+    background-color: #00796b;
+    color: white;
+  }
+  
+  .tabla-seo tr:nth-child(even),
+  .tabla-checklist tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Estilos para ejemplos de código */
+  .codigo-ejemplo {
+    background-color: #f8f8f8;
+    border-left: 4px solid #009688;
+    padding: 1em;
+    margin: 1em 0;
+    overflow-x: auto;
+  }
+  
+  /* Estilos para el botón de descarga */
+  .boton-descarga {
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .btn-descargar {
+    display: inline-block;
+    background-color: #009688;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  
+  .btn-descargar:hover {
+    background-color: #00796b;
+    text-decoration: none;
+  }
+  
+  .btn-descargar i {
+    margin-right: 8px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+      gap: 0.5em;
+    }
+    
+    nav ul ul {
+      position: static;
+      display: none;
+      box-shadow: none;
+      width: 100%;
+    }
+    
+    nav ul li:hover > ul {
+      display: block;
+    }
+    
+    .tabla-seo, .tabla-checklist {
+      font-size: 0.9em;
+    }
+    
+    .codigo-ejemplo {
+      font-size: 0.9em;
+    }
+  }

@@ -1,12 +1,3 @@
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin-top: 50px;
-}
-
 .box {
     width: 200px;
     padding: 20px;

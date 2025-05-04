@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clase Semana 8 - PHP y MySQL</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../assets/css/semanas/semana8/style.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Desarrollo y Diseño Web + IA</h1>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Inicio</a></li>
+        <li>
+            <a href="#">Semana 7 ▾</a>
+            <ul>
+                <li><a href="../semana7/index.html">Resumen Semana 7</a></li>
+                <li><a href="../semana7/frontend/formulario.html.html">Formulario Ejemplo</a></li>
+            </ul>
+        </li>
+        <li>
+          <a href="#">Semana 8 ▾</a>
+          <ul>
+            <li><a href="frontend/blog.html">Blog CMS</a></li>
+          </ul>
+        </li>
+        <li><a href="../semana9/index.html">Semana 9</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Resumen Semana 8</h2>
+
+    <!-- Preparación del Entorno -->
+    <section id="prep-entorno">
+      <h2>1. Preparación del Entorno</h2>
+      <ol class="list-group list-group-numbered">
+        <li class="list-group-item">
+          <strong>Iniciar XAMPP</strong>
+          <ul>
+            <li>Abre el Panel de Control de <em>XAMPP</em>.</li>
+            <li>Inicia <em>Apache</em> y <em>MySQL</em>.</li>
+            <li>Verifica en el navegador <code>http://localhost/</code>.</li>
+          </ul>
+        </li>
+        <li class="list-group-item">
+          <strong>Crear carpeta de proyecto</strong>
+          <p>En <code>C:\xampp\htdocs\blogcms</code> y abre con VS Code:</p>
+          <div class="codigo-ejemplo">
+            <pre><code>cd C:\xampp\htdocs\blogcms y ejecuta el comando code .</code></pre>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <strong>Inicializar Git &amp; GitHub</strong>
+          <div class="codigo-ejemplo">
+            <pre><code>git init / git add . / git commit -m "Inicializa proyecto BlogCMS"
+
+# En GitHub:
+# Crea repo vacío 'blogcms' y conecta remoto:
+ git remote add origin https://github.com/tu-usuario/blogcms.git
+ git push -u origin main</code></pre>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- PHP ↔ MySQL -->
+    
+    <section id="conexion-php-mysql">
+      <h2>2. Conexión PHP ↔ MySQL</h2>
+      <h3>2.1 Base de Datos</h3>
+      <p>En <code>phpMyAdmin</code>, crea <code>blogdb</code> y ejecuta:</p>
+      <div class="codigo-ejemplo">
+        <pre><code>CREATE TABLE `posts` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `title` VARCHAR(255) NOT NULL,
+  `body` TEXT NOT NULL,
+  `author` VARCHAR(100) NOT NULL,
+  `category` VARCHAR(50) NOT NULL,
+  `image` VARCHAR(255) DEFAULT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</code></pre>
+      </div>
+      <h3>2.2 <code>db_config.php</code></h3>
+      <div class="codigo-ejemplo">
+        <pre><code>&lt;?php
+// Conexión MySQL
+$conn = new mysqli('localhost', 'root', '', 'blogdb');
+if ($conn->connect_error) {
+  die('Conexión fallida: ' + $conn->connect_error);
+}
+?&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="crear-usuario">
+      <h2>3. Configuración de Usuarios</h2>
+      <h3>3.1 Crear Tabla de Usuarios</h3>
+      <p>Primero, crea la tabla de usuarios ejecutando la siguiente sentencia SQL en phpMyAdmin:</p>
+      <div class="codigo-ejemplo">
+        <pre><code>CREATE TABLE `users` (
+  `id` INT(11) AUTO_INCREMENT PRIMARY KEY,
+  `username` VARCHAR(50) NOT NULL UNIQUE,
+  `password` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(100) NOT NULL UNIQUE,
+  `role` VARCHAR(20) DEFAULT 'user',
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</code></pre>
+      </div>
+      
+      <h3>3.2 Insertar Usuario Administrador</h3>
+      <p>Luego, crea un usuario administrador con la siguiente sentencia SQL:</p>
+      <div class="codigo-ejemplo">
+        <pre><code>INSERT INTO users (username, password, email, role) 
+VALUES ('admin', 'admin123', 'admin@example.com', 'admin');</code></pre>
+      </div>
+      <p>Este usuario podrá ser utilizado para iniciar sesión en el sistema con:</p>
+      <ul>
+        <li><strong>Usuario:</strong> admin</li>
+        <li><strong>Contraseña:</strong> admin123</li>
+      </ul>
+      
+      <h3>5.3 Flujo de Trabajo</h3>
+      <p>Una vez configurado el usuario, podrás:</p>
+      <ol>
+        <li>Iniciar sesión en el sistema usando las credenciales del administrador</li>
+        <li>Crear nuevos posts desde la interfaz del sistema</li>
+        <li>Ver, editar y eliminar posts existentes</li>
+      </ol>
+      <p>Los posts creados se almacenarán en la tabla <code>posts</code> y estarán asociados al usuario que los creó.</p>
+    </section>
+
+    <!-- Demo Insertar -->
+    <section id="demo-insertar">
+      <h2>4. Demo: Insertar Datos con Autor, Categoría e Imagen</h2>
+      <h3><code>create.html</code></h3>
+      <div class="codigo-ejemplo">
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Crear Post&lt;/title&gt;
+  &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+  &lt;link rel="stylesheet" href="assets/css/semanas/semana8/style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class="container p-4 shadow-sm rounded bg-white"&gt;
+  &lt;h1 class="mb-4"&gt;Crear Nueva Publicación&lt;/h1&gt;
+  &lt;form id="postForm" action="insert.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate&gt;
+    &lt;div class="mb-3"&gt;
+      &lt;label for="title" class="form-label"&gt;Título&lt;/label&gt;
+      &lt;input type="text" class="form-control" id="title" name="title" required&gt;
+      &lt;div class="invalid-feedback"&gt;El título es obligatorio.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="mb-3"&gt;
+      &lt;label for="body" class="form-label"&gt;Contenido&lt;/label&gt;
+      &lt;textarea class="form-control" id="body" name="body" rows="5" required&gt;&lt;/textarea&gt;
+      &lt;div class="invalid-feedback"&gt;El contenido es obligatorio.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="mb-3"&gt;
+      &lt;label for="author" class="form-label"&gt;Autor&lt;/label&gt;
+      &lt;input type="text" class="form-control" id="author" name="author" required&gt;
+      &lt;div class="invalid-feedback"&gt;El autor es obligatorio.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="mb-3"&gt;
+      &lt;label for="category" class="form-label"&gt;Categoría&lt;/label&gt;
+      &lt;input type="text" class="form-control" id="category" name="category" required&gt;
+      &lt;div class="invalid-feedback"&gt;La categoría es obligatoria.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="mb-3"&gt;
+      &lt;label for="image" class="form-label"&gt;Imagen (opcional)&lt;/label&gt;
+      &lt;input class="form-control" type="file" id="image" name="image" accept="image/*"&gt;
+    &lt;/div&gt;
+    &lt;button type="submit" class="btn btn-primary"&gt;Guardar&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+&lt;script src="assets/js/semanas/semana8/script.js" defer&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+  
+      <h3><code>insert.php</code></h3>
+      <div class="codigo-ejemplo">
+        <pre><code>&lt;?php
+require 'db_config.php';
+
+// Sanear datos
+$title    = $conn->real_escape_string($_POST['title']);
+$body     = $conn->real_escape_string($_POST['body']);
+$author   = $conn->real_escape_string($_POST['author']);
+$category = $conn->real_escape_string($_POST['category']);
+$imagePath = NULL;
+
+// Proceso de subida de imagen
+if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+    $uploadDir = 'assets/uploads/';
+    
+    // Crear directorio si no existe
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+    
+    // Generar nombre único
+    $fileName = uniqid() . '_' . basename($_FILES['image']['name']);
+    $uploadFile = $uploadDir . $fileName;
+    
+    // Mover archivo
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile)) {
+        $imagePath = $uploadFile;
+    }
+}
+
+// Insertar
+$sql = "INSERT INTO posts (title, body, author, category, image) VALUES ('$title', '$body', '$author', '$category', "
+      . ($imagePath ? "'$imagePath'" : 'NULL') . ")";
+if ($conn->query($sql) === TRUE) {
+    header("Location: index.php?msg=guardado");
+    exit;
+} else {
+    echo "Error al guardar: " . $conn->error;
+}
+$conn->close();
+?&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="actividad">
+      <h2>5. Actividad Práctica</h2>
+      <h3>Objetivo</h3>
+      <p>Completar el sistema de Blog CMS implementando las siguientes funcionalidades:</p>
+      
+      <h4>1. Listado de Posts</h4>
+      <div class="codigo-ejemplo">
+        <pre><code>&lt;?php
+// list.php - Código para listar todos los posts
+require 'db_config.php';
+
+$sql = "SELECT * FROM posts ORDER BY created_at DESC";
+$result = $conn->query($sql);
+
+// Mostrar los posts en formato HTML o JSON
+?&gt;</code></pre>
+      </div>
+      
+      <h4>2. Ver Post Individual</h4>
+      <div class="codigo-ejemplo">
+        <pre><code>&lt;?php
+// view.php - Código para mostrar un post específico
+require 'db_config.php';
+
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+$sql = "SELECT * FROM posts WHERE id = $id";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $post = $result->fetch_assoc();
+    // Mostrar el post
+} else {
+    echo "Post no encontrado";
+}
+?&gt;</code></pre>
+      </div>
+      
+      <h4>3. Editar Post</h4>
+      <div class="codigo-ejemplo">
+        <pre><code>&lt;?php
+// edit.php - Código para actualizar un post existente
+require 'db_config.php';
+
+// Obtener datos del formulario
+// Actualizar en la base de datos
+// Redireccionar a la página de listado
+?&gt;</code></pre>
+      </div>
+      
+      <h4>4. Eliminar Post</h4>
+      <div class="codigo-ejemplo">
+        <pre><code>&lt;?php
+// delete.php - Código para eliminar un post
+require 'db_config.php';
+
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+$sql = "DELETE FROM posts WHERE id = $id";
+
+if ($conn->query($sql) === TRUE) {
+    header("Location: list.php?msg=eliminado");
+} else {
+    echo "Error al eliminar: " . $conn->error;
+}
+?&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Diseño y Desarrollo Web + IA - TEC UCT - Docente: Cristian Iglesias Vera - cristian.iglesias@uct.cl</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="../../assets/js/semanas/semana8/script.js" defer></script>
+</body>
+</html>

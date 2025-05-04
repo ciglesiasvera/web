@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Semana 4 - Desarrollo Web</title>
+  <link rel="stylesheet" href="../../assets/css/semanas/semana4/style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Desarrollo y Diseño Web + IA</h1>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Inicio</a></li>
+        <li>
+        <a href="#">Semana 3 ▾</a>
+          <ul>
+            <li><a href="../semana3/index.html">Resumen Semana 3</a></li>
+            <li><a href="../semana3/htmltags.html">HTML Tags</a></li>
+            <li><a href="../semana3/selectorescss.html">Selectores CSS</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Semana 4 ▾</a>
+          <ul>
+            <li><a href="box-model.html">Box Model</a></li>
+            <li><a href="calculator.html">Calculadora JS</a></li>
+            <li><a href="oddoreven.html">Par o Impar</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Semana 5 ▾</a>
+          <ul>
+            <li><a href="../semana5/index.html">Resumen Semana 5</a></li>
+            <li><a href="../semana5/dom.html">Manipulación del DOM</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Semana 4: Box Model y JavaScript Básico</h2>
+
+    <section>
+      <h3>SESIÓN 1: El Modelo de Cajas (Box Model)</h3>
+      <p>El Box Model define cómo se calculan las dimensiones de los elementos en CSS.</p>
+      
+      <h4>Propiedades Clave:</h4>
+      <ul>
+        <li><strong>width y height:</strong> Definen el tamaño del contenido del elemento.</li>
+        <li><strong>padding:</strong> Espacio entre el contenido y el borde del elemento.</li>
+        <li><strong>border:</strong> Borde que rodea el padding (si existe).</li>
+        <li><strong>margin:</strong> Espacio exterior al borde, que separa el elemento de otros elementos.</li>
+      </ul>
+
+      <h4>Diferencias entre content-box y border-box:</h4>
+      <ul>
+        <li><strong>content-box:</strong> El ancho y alto especificados solo incluyen el contenido. El padding y el borde se añaden alrededor del contenido.</li>
+        <li><strong>border-box:</strong> El ancho y alto especificados incluyen el contenido, el padding y el borde.</li>
+      </ul>
+
+      <h4>Content-Box</h4>
+      <p>Content-box es como una caja donde solo cuentas el espacio interior donde pones tus cosas.</p>
+      <p>Por ejemplo, si quieres una caja que mida 20 cm de ancho y 20 cm de alto para tus cosas, con content-box, esos 20 cm solo miden el espacio interior donde van las cosas. Si añades 5 cm de relleno y un borde de 2 cm, tu caja total medirá 20 cm + 5 cm + 2 cm = 27 cm de ancho y alto.</p>
+
+      <h4>Border-Box</h4>
+      <p>Border-box es como una caja donde cuentas todo: el espacio interior para tus cosas, el relleno y el borde.</p>
+      <p>Por ejemplo, si quieres una caja que mida 20 cm de ancho y 20 cm de alto para tus cosas, con border-box, esos 20 cm incluyen todo: el espacio para las cosas, el relleno y el borde. Entonces, si añades 5 cm de relleno y un borde de 2 cm, esos se restan del espacio interior para las cosas. El espacio interior para las cosas será 20 cm - 5 cm - 2 cm = 13 cm de ancho y alto.</p>
+
+      <h4>Actividad Práctica:</h4>
+      <p>Visita la <a href="box-model.html">demostración del Box Model</a> para ver ejemplos interactivos.</p>
+    </section>
+
+    <section>
+      <h3>SESIÓN 2: Introducción a JavaScript</h3>
+      <p>JavaScript es esencial para agregar interactividad y dinamismo a las páginas web.</p>
+
+      <h4>Fundamentos de la Sintaxis Básica:</h4>
+      <ul>
+        <li><strong>Variables:</strong> Declaración (var, let, const) y asignación de valores.</li>
+        <li><strong>Operadores:</strong> Aritméticos (+, -, *, /, %), Comparación (==, ===, !=, !==, >, <, >=, <=), Lógicos (&&, ||, !).</li>
+        <li><strong>Condicionales:</strong> Uso de if, else if, else para controlar el flujo del programa.</li>
+      </ul>
+
+      <h4>Tipos de Datos Primitivos:</h4>
+      <ul>
+        <li><strong>number:</strong> Números enteros y de punto flotante.</li>
+        <li><strong>string:</strong> Cadenas de texto.</li>
+        <li><strong>boolean:</strong> Valores verdadero o falso.</li>
+        <li><strong>null:</strong> Valor nulo intencional.</li>
+        <li><strong>undefined:</strong> Valor no asignado.</li>
+      </ul>
+
+      <h4>Actividades Prácticas:</h4>
+      <ul>
+        <li><a href="calculator.html">Calculadora Básica</a> - Operaciones aritméticas simples con JavaScript.</li>
+        <li><a href="oddoreven.html">Par o Impar</a> - Determinar si un número es par o impar.</li>
+      </ul>
+
+      <h4>¿Qué es console.log()?</h4>
+      <p>console.log() es como un pequeño altavoz que sirve para saber lo que está haciendo tu código en cada paso. Cuando programas, a veces tu código no hace lo que esperas. console.log() te ayuda a ver qué está pasando dentro de tu programa, paso a paso.</p>
+
+      <pre><code>// Ejemplo de console.log()
+let numero1 = 10;
+let numero2 = 4;
+let suma = numero1 + numero2;
+
+// Usamos console.log() para ver el resultado
+console.log("La suma de " + numero1 + " y " + numero2 + " es: " + suma);</code></pre>
+    </section>
+
+    <section>
+      <h3>Recursos Adicionales</h3>
+      <ul>
+        <li><a href="https://www.w3schools.com/css/css_boxmodel.asp" target="_blank">W3Schools - Box Model</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model" target="_blank">MDN - Box Model</a></li>
+        <li><a href="https://www.codecademy.com/learn/introduction-to-javascript" target="_blank">Codecademy - Introducción a JavaScript</a></li>
+        <li><a href="https://www.w3schools.com/js/" target="_blank">W3Schools - JavaScript Tutorial</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Diseño y Desarrollo Web + IA - TEC UCT - Docente: Cristian Iglesias Vera - cristian.iglesias@uct.cl</p>
+  </footer>
+
+</body>
+-->

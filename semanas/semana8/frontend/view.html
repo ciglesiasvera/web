@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ver Post - Blog CMS</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/semanas/semana8/style.css">
+  <link rel="stylesheet" href="../../../assets/css/semanas/semana8/frontend.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="blog.html">Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-4">
+    <div id="postContainer">
+      <!-- El contenido del post se cargará aquí dinámicamente -->
+      <div class="text-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Cargando...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Obtener el ID del post de la URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const postId = urlParams.get('id');
+      
+      if (!postId) {
+        document.getElementById('postContainer').innerHTML = '<div class="alert alert-danger">No se especificó un ID de post válido.</div>';
+        return;
+      }
+      
+      // Cargar el post
+      fetch(`../backend/api/view_post.php?id=${postId}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Post no encontrado');
+          }
+          return response.json();
+        })
+        .then(post => {
+          displayPost(post);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          document.getElementById('postContainer').innerHTML = `<div class="alert alert-danger">Error: ${error.message}</div>`;
+        });
+    });
+    
+    function displayPost(post) {
+      const container = document.getElementById('postContainer');
+      
+      // Actualizar el título de la página
+      document.title = `${post.title} - Blog CMS`;
+      
+      // Crear el contenido HTML
+      let html = `
+        <div class="mb-4"><h1 class="mb-3">${post.title}</h1>
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <span class="badge bg-primary">${post.category}</span>
+            <small class="text-muted">Por ${post.author} • ${new Date(post.created_at).toLocaleDateString('es-ES', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}</small>
+          </div>
+      `;
+      
+      // Imagen (si existe)
+      if (post.image) {
+        html += `
+          <div class="text-center mb-4">
+            <img src="${post.image}" alt="${post.title}" class="img-fluid rounded" style="max-height: 400px;">
+          </div>
+        `;
+      }
+      
+      // Contenido
+      html += `
+          <div class="post-content">
+            ${post.body.replace(/\n/g, '<br>')}
+          </div>
+        </div>
+      `;
+      
+      container.innerHTML = html;
+    }
+  </script>
+</body>
+</html>
+
+

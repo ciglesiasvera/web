@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase: Manipulación del DOM y Eventos con Javascript</title>
+    <link rel="stylesheet" href="../../assets/css/semanas/semana5/style.css">
+</head>
+<body>
+    <header>
+        <h1>Desarrollo y Diseño Web + IA</h1>
+        <nav>
+            <ul>
+                <li><a href="../../index.html">Inicio</a></li>
+                <li>
+                  <a href="#">Semana 4 ▾</a>
+                  <ul>
+                    <li><a href="../semana4/index.html">Resumen Semana 4</a></li>
+                    <li><a href="../semana4/box-model.html">Box Model</a></li>
+                    <li><a href="../semana4/calculator.html">Calculadora JS</a></li>
+                    <li><a href="../semana4/oddoreven.html">Par o Impar</a></li>
+                  </ul>
+                </li>
+                <li>
+                    <a href="#">Semana 5 ▾</a>
+                    <ul>
+                        <li><a href="dom.html">Manipulación DOM</a></li>
+                    </ul>
+                </li>
+                <li><a href="../semana6/index.html">Semana 6</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Clase: Manipulación del DOM y Eventos con Javascript</h2>
+
+        <section>
+            <h3>Objetivo de la clase:</h3>
+            <ul>
+                <li>Entender qué es el DOM y cómo manipularlo.</li>
+                <li>Crear una galería de imágenes interactiva.</li>
+                <li>Programar un pequeño juego de adivinar el número.</li>
+                <li>Integrar eventos para que las páginas web respondan a las acciones del usuario.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>1. Introducción al DOM: Document Object Model</h3>
+            <h4>¿Qué es el DOM?</h4>
+            <p>El DOM es como un "mapa" de una página web. Cada cosa que se escribe en HTML (etiquetas, texto, imágenes) se convierte en un nodo o elemento del DOM.</p>
+
+            <table class="metodos-dom">
+                <tr>
+                    <th>Método</th>
+                    <th>¿Qué hace?</th>
+                </tr>
+                <tr>
+                    <td><code>getElementById()</code></td>
+                    <td>Busca por ID</td>
+                </tr>
+                <tr>
+                    <td><code>querySelector()</code></td>
+                    <td>Busca por selector CSS</td>
+                </tr>
+                <tr>
+                    <td><code>createElement()</code></td>
+                    <td>Crea un nuevo elemento</td>
+                </tr>
+                <tr>
+                    <td><code>appendChild()</code></td>
+                    <td>Agrega un elemento hijo</td>
+                </tr>
+                <tr>
+                    <td><code>removeChild()</code></td>
+                    <td>Elimina un elemento hijo</td>
+                </tr>
+            </table>
+
+            <p>Cuando usamos JavaScript, se puede:</p>
+            <ul>
+                <li>Leer esos elementos.</li>
+                <li>Cambiarlos.</li>
+                <li>Agregar nuevos.</li>
+                <li>Quitar los que ya no se necesitan.</li>
+            </ul>
+
+            <h4>Ejemplo básico:</h4>
+            <div class="codigo-ejemplo">
+                <h5>HTML:</h5>
+                <pre><code>&lt;p id="saludo"&gt;Hola, bienvenido a mi página.&lt;/p&gt;
+&lt;button onclick="cambiarSaludo()"&gt;Haz clic aquí&lt;/button&gt;</code></pre>
+
+                <h5>JavaScript:</h5>
+                <pre><code>function cambiarSaludo() {
+  const parrafo = document.getElementById('saludo');
+  parrafo.textContent = '¡Has cambiado el saludo!';
+}</code></pre>
+            </div>
+
+            <p><strong>Explicación:</strong></p>
+            <ul>
+                <li><code>document.getElementById('saludo')</code>: Busca el elemento con el ID "saludo".</li>
+                <li><code>.textContent</code>: Cambia el texto dentro de ese elemento.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>2. Integración de Eventos en Javascript</h3>
+            <h4>¿Qué es un evento?</h4>
+            <p>Un evento es algo que pasa en la página: El usuario hace clic, pasa el mouse por encima, escribe en un cuadro de texto, etc.</p>
+
+            <h4>¿Cómo se escucha un evento?</h4>
+            <p>Se puede usar "addEventListener" para "escuchar" estos eventos.</p>
+
+            <div class="codigo-ejemplo">
+                <h5>HTML:</h5>
+                <pre><code>&lt;button id="miBoton"&gt;Presióname&lt;/button&gt;</code></pre>
+
+                <h5>JavaScript:</h5>
+                <pre><code>const boton = document.getElementById('miBoton');
+
+boton.addEventListener('click', function() {
+  alert('¡Me presionaste!');
+});</code></pre>
+            </div>
+
+            <p><strong>Explicación:</strong></p>
+            <ul>
+                <li>Primero seleccionamos el botón.</li>
+                <li>Después le decimos: "Cuando te hagan clic, ejecuta esta función".</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>3. Demo Práctica: Galería de Imágenes</h3>
+            <h4>Objetivo:</h4>
+            <p>Crear una galería donde, que al hacer clic en una miniatura, se muestre la imagen grande.</p>
+
+            <div class="codigo-ejemplo">
+                <h5>HTML:</h5>
+                <pre><code>&lt;h2&gt;Galería de Imágenes&lt;/h2&gt;
+&lt;img id="imagenPrincipal" src="https://via.placeholder.com/400" alt="Imagen principal" width="400"&gt;
+&lt;div&gt;
+  &lt;img src="https://via.placeholder.com/100/0000FF" class="miniatura" width="100"&gt;
+  &lt;img src="https://via.placeholder.com/100/FF0000" class="miniatura" width="100"&gt;
+  &lt;img src="https://via.placeholder.com/100/00FF00" class="miniatura" width="100"&gt;
+&lt;/div&gt;</code></pre>
+
+                <h5>JavaScript:</h5>
+                <pre><code>const miniaturas = document.querySelectorAll('.miniatura');
+const imagenPrincipal = document.getElementById('imagenPrincipal');
+
+miniaturas.forEach(function(miniatura) {
+  miniatura.addEventListener('click', function() {
+    imagenPrincipal.src = miniatura.src;
+  });
+});</code></pre>
+            </div>
+
+            <p><strong>Explicación:</strong></p>
+            <ul>
+                <li>Se seleccionan todas las miniaturas.</li>
+                <li>Por cada miniatura, se crea un "escuchador" de clics.</li>
+                <li>Cuando se hace clic, se cambia la imagen principal por la de la miniatura.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>4. Ejercicio: Juego "Adivina el Número"</h3>
+            <h4>Objetivo:</h4>
+            <p>Crear un juego donde la computadora elige un número al azar, para tratar de adivinarlo.</p>
+
+            <div class="codigo-ejemplo">
+                <h5>HTML:</h5>
+                <pre><code>&lt;h2&gt;Juego: Adivina el Número&lt;/h2&gt;
+&lt;p&gt;Estoy pensando en un número entre 1 y 10. ¿Cuál crees que es?&lt;/p&gt;
+&lt;input type="number" id="adivinanza" min="1" max="10"&gt;
+&lt;button onclick="verificarNumero()"&gt;Adivinar&lt;/button&gt;
+&lt;p id="resultado"&gt;&lt;/p&gt;</code></pre>
+
+                <h5>JavaScript:</h5>
+                <pre><code>const numeroSecreto = Math.floor(Math.random() * 10) + 1;
+
+function verificarNumero() {
+  const adivinanza = parseInt(document.getElementById('adivinanza').value);
+  const resultado = document.getElementById('resultado');
+
+  if (adivinanza === numeroSecreto) {
+    resultado.textContent = '¡Correcto! Adivinaste el número.';
+  } else if (adivinanza < numeroSecreto) {
+    resultado.textContent = 'Muy bajo. Intenta de nuevo.';
+  } else {
+    resultado.textContent = 'Muy alto. Intenta de nuevo.';
+  }
+}</code></pre>
+            </div>
+
+            <p><strong>Explicación:</strong></p>
+            <ul>
+                <li>Se genera un número al azar del 1 al 10.</li>
+                <li>El usuario ingresa un número y se hace la comparación.</li>
+                <li>Se muestra un mensaje según la respuesta.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>5. Actividades Finales (Refuerzo)</h3>
+            <h4>Actividad 1:</h4>
+            <p>Agregar más imágenes a la galería y probar que funcionen correctamente.</p>
+
+            <h4>Actividad 2:</h4>
+            <p>Mejorar el juego "Adivina el número" para que:</p>
+            <ul>
+                <li>Le dé al jugador 3 intentos.</li>
+                <li>Cuando se terminen los intentos, muestre el número secreto.</li>
+            </ul>
+
+            <h4>Actividad 3:</h4>
+            <p>Crear un botón extra que, cuando se presione, reinicie el juego.</p>
+
+            <h4>Tips:</h4>
+            <ul>
+                <li>Usar la consola del navegador para ver errores y practicar.</li>
+                <li>Probar y experimentar cambiando los textos, imágenes y estilos para personalizar los ejercicios.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>6. Guía rápida: Atajos para desarrolladores</h3>
+            <table class="atajos">
+                <tr>
+                    <th>Atajo</th>
+                    <th>Función</th>
+                </tr>
+                <tr>
+                    <td><kbd>F12</kbd></td>
+                    <td>Abrir las herramientas del desarrollador.</td>
+                </tr>
+                <tr>
+                    <td><kbd>Ctrl + Shift + I</kbd> (Cmd + Option + I en Mac)</td>
+                    <td>Abrir herramientas del desarrollador.</td>
+                </tr>
+                <tr>
+                    <td><kbd>Ctrl + Shift + C</kbd></td>
+                    <td>Activar el selector de elementos.</td>
+                </tr>
+                <tr>
+                    <td><kbd>Ctrl + R</kbd></td>
+                    <td>Recargar la página.</td>
+                </tr>
+                <tr>
+                    <td><kbd>Ctrl + Shift + R</kbd></td>
+                    <td>Recarga la página ignorando la caché.</td>
+                </tr>
+                <tr>
+                    <td><kbd>Ctrl + + / -</kbd></td>
+                    <td>Zoom in / Zoom out.</td>
+                </tr>
+                <tr>
+                    <td><kbd>Ctrl + 0</kbd></td>
+                    <td>Resetear el zoom.</td>
+                </tr>
+            </table>
+
+            <p><strong>Consejo:</strong> Explorar la pestaña "Console" para ver mensajes y errores.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Diseño y Desarrollo Web + IA - TEC UCT - Docente: Cristian Iglesias Vera - cristian.iglesias@uct.cl</p>
+    </footer>
+</body>
+</html>

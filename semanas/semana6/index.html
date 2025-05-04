@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimización SEO y Accesibilidad</title>
+    <link rel="stylesheet" href="../../assets/css/semanas/semana6/style.css">
+</head>
+<body>
+    <header>
+      <h1>Desarrollo y Diseño Web + IA</h1>
+        <nav>
+          <ul>
+              <li><a href="../../index.html">Inicio</a></li>
+              <li>
+                  <a href="#">Semana 5 ▾</a>
+                  <ul>
+                      <li><a href="../semana5/index.html">Resumen Semana 5</a></li>
+                      <li><a href="../semana5/dom.html">Manipulación DOM</a></li>
+                  </ul>
+              </li>
+              <li><a href="index.html">Semana 6</a></li>
+              <li>
+                <a href="#">Semana 7 ▾</a>
+                <ul>
+                    <li><a href="../semana7/index.html">Resumen Semana 7</a></li>
+                    <li><a href="../semana7/frontend/formulario.html.html">Formulario Ejemplo</a></li>
+                </ul>
+              </li>
+          </ul>
+      </nav>
+    </header>
+
+    <main>
+        <h2>Optimización SEO y Accesibilidad</h2>
+
+        <section>
+            <h3>Objetivos RA1 y Prueba P2 (Portfolio)</h3>
+            <ul>
+                <li>Recordatorio: cada uno trabaja en su servidor real vía VS Code + GitHub.</li>
+                <li>Revisión rápida de criterios (cumplimiento W3C, responsive, DOM).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Optimización SEO básica</h3>
+            
+            <h4>Etiquetas Meta esenciales</h4>
+            <table class="tabla-seo">
+                <tr>
+                    <th>Etiqueta</th>
+                    <th>Uso recomendado</th>
+                </tr>
+                <tr>
+                    <td><code>&lt;meta charset="UTF-8"&gt;</code></td>
+                    <td>Define la codificación de caracteres. Siempre al inicio del &lt;head&gt;</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;meta name="viewport" content="…"&gt;</code></td>
+                    <td>Hace tu sitio responsive en móviles.</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;title&gt;</code></td>
+                    <td>Título de la página (50–60 caracteres).</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;meta name="description" content="…"&gt;</code></td>
+                    <td>Resumen atractivo (150–160 caracteres).</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;link rel="canonical" href="…"&gt;</code></td>
+                    <td>Evita contenido duplicado indicando tu URL preferida.</td>
+                </tr>
+            </table>
+
+            <h4>Ejemplo completo en &lt;head&gt;</h4>
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Portfolio • Ana Pérez – Front‑end Developer&lt;/title&gt;
+  &lt;meta name="description" content="Portafolio web de Ana Pérez, desarrolladora front‑end especialista en HTML5, CSS3 y JavaScript."&gt;
+  &lt;link rel="canonical" href="https://www.anaperez.dev/"&gt;
+&lt;/head&gt;</code></pre>
+            </div>
+
+            <h4>Tips</h4>
+            <ul>
+                <li>Title: colocar palabra clave principal al inicio, seguido de nombre o marca.</li>
+                <li>Description: incluir un llamado a la acción (p.ej. "Descubre mis proyectos…").</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Encabezados y estructura semántica</h3>
+            <ul>
+                <li>Un solo &lt;h1&gt; por página: título principal.</li>
+                <li>Usa jerarquía lógica:</li>
+            </ul>
+
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;h1&gt;Portafolio de Ana Pérez&lt;/h1&gt;
+&lt;h2&gt;Sobre mí&lt;/h2&gt;
+&lt;h3&gt;Formación&lt;/h3&gt;
+&lt;h2&gt;Proyectos&lt;/h2&gt;
+&lt;h3&gt;Proyecto A&lt;/h3&gt;</code></pre>
+            </div>
+
+            <h4>Aprovechar etiquetas semánticas:</h4>
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;header&gt;…&lt;/header&gt;
+&lt;nav&gt;…&lt;/nav&gt;
+&lt;main&gt;…&lt;/main&gt;
+&lt;section&gt;…&lt;/section&gt;
+&lt;article&gt;…&lt;/article&gt;
+&lt;aside&gt;…&lt;/aside&gt;
+&lt;footer&gt;…&lt;/footer&gt;</code></pre>
+            </div>
+            <p>(Esto ayuda a los buscadores a entender el contenido.)</p>
+        </section>
+
+        <section>
+            <h3>URLs amigables</h3>
+            <ul>
+                <li>Solo minúsculas, sin espacios.</li>
+                <li>Palabras separadas por guiones (-).</li>
+                <li>Evitar parámetros innecesarios.</li>
+            </ul>
+
+            <h4>Ejemplos correctos</h4>
+            <div class="codigo-ejemplo">
+                <pre><code>https://www.tu-dominio.cl/about.html
+https://www.tu-dominio.cl/projects.html#contact</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h3>Robots.txt</h3>
+            <p>Define qué puede indexar Google y otros motores:</p>
+            <div class="codigo-ejemplo">
+                <pre><code># /robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://www.tu-dominio.cl/sitemap.xml</code></pre>
+            </div>
+
+            <ul>
+                <li>Colocar este archivo en la raíz del servidor (/robots.txt).</li>
+                <li>El Sitemap facilita que los bots encuentren todas las páginas.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Sitemap.xml</h3>
+            <p>Un "mapa" en XML de las URLs:</p>
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.tu-dominio.cl/&lt;/loc&gt;
+    &lt;lastmod&gt;2025-04-21&lt;/lastmod&gt;
+    &lt;priority&gt;1.00&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.tu-dominio.cl/about.html&lt;/loc&gt;
+    &lt;lastmod&gt;2025-04-20&lt;/lastmod&gt;
+    &lt;priority&gt;0.80&lt;/priority&gt;
+  &lt;/url&gt;
+  // Más URLs aquí 
+&lt;/urlset&gt;</code></pre>
+            </div>
+
+            <p>Subir como /sitemap.xml.</p>
+            <p>Actualizar lastmod cada vez que se cambie la página.</p>
+        </section>
+
+        <section>
+            <h3>Imágenes y atributos ALT</h3>
+            
+            <h4>Nombre de archivo descriptivo:</h4>
+            <div class="codigo-ejemplo">
+                <pre><code>foto-perfil-ana-perez.jpg</code></pre>
+            </div>
+
+            <h4>alt descriptivo:</h4>
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;img src="foto-perfil-ana-perez.jpg"
+     alt="Ana Pérez sonriendo con fondo de oficina"&gt;</code></pre>
+            </div>
+
+            <h4>srcset para responsive:</h4>
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;img
+  src="foto-800.jpg"
+  srcset="foto-400.jpg 400w, foto-800.jpg 800w"
+  sizes="(max-width: 600px) 400px, 800px"
+  alt="Ejemplo de proyecto A"&gt;</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h3>Enlaces internos y texto ancla</h3>
+            <ul>
+                <li>Usar texto claro: "Más sobre mis proyectos" en lugar de "haz clic aquí".</li>
+                <li>Estructura de navegación: un &lt;nav&gt; con enlaces a las secciones clave facilita el rastreo.</li>
+            </ul>
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="/"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/about.html"&gt;Sobre mí&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/projects.html"&gt;Proyectos&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#contact"&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h3>Performance y Core Web Vitals</h3>
+            <p>Aunque no es SEO puro, la velocidad influye en el posicionamiento:</p>
+            <ul>
+                <li>Optimizar imágenes (WebP, compresión).</li>
+                <li>Minificar CSS/JS: usar herramientas como terser o cssnano.</li>
+                <li>Habilitar caché en el servidor (headers Cache-Control).</li>
+                <li>Revisar con Lighthouse: DevTools → Lighthouse → Genera reporte → pestaña "Performance" y "SEO".</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Herramientas de validación</h3>
+            <ul>
+                <li>HTML/CSS → W3C Validator</li>
+                <li>Lighthouse → Chrome DevTools → Audits → SEO</li>
+                <li>WebAIM Contrast Checker → contraste de texto vs. fondo</li>
+                <li>Search Console (opcional) → monitorea errores de rastreo</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Resumen de implementación</h3>
+            <ol>
+                <li>
+                    <h4>Metadatos esenciales:</h4>
+                    <div class="codigo-ejemplo">
+                        <pre><code>&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Mi Portfolio • Nombre Apellido&lt;/title&gt;
+    &lt;meta name="description" content="Portafolio web de Nombre Apellido, desarrollador front‑end"&gt;
+    &lt;link rel="canonical" href="https://tu-dominio.cl/"&gt;
+&lt;/head&gt;</code></pre>
+                    </div>
+                </li>
+                <li>Etiquetas de encabezado: un solo &lt;h1&gt; por página, estructura jerárquica.</li>
+                <li>URLs amigables: /about.html, /projects.html.</li>
+                <li>Mapa de sitio: crea sitemap.xml y sube al servidor.</li>
+                <li>
+                    <h4>Robots.txt:</h4>
+                    <div class="codigo-ejemplo">
+                        <pre><code>User-agent: *
+Allow: /
+Sitemap: https://tu-dominio.cl/sitemap.xml</code></pre>
+                    </div>
+                </li>
+                <li>Práctica: añadir todos los elementos al repositorio, validar con DevTools → Lighthouse → SEO.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h3>Mejora de accesibilidad</h3>
+            <ul>
+                <li>Añadir lang="es" en &lt;html&gt;.</li>
+                <li>Roles ARIA y landmarks:</li>
+            </ul>
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;header role="banner"&gt;…&lt;/header&gt;
+&lt;nav role="navigation"&gt;…&lt;/nav&gt;
+&lt;main role="main"&gt;…&lt;/main&gt;
+&lt;footer role="contentinfo"&gt;…&lt;/footer&gt;</code></pre>
+            </div>
+            <ul>
+                <li>Texto alternativo (alt) descriptivo en imágenes.</li>
+                <li>Contraste: revisa colores con WebAIM Contrast Checker.</li>
+                <li>Prueba de navegación con teclado (Tab, Shift+Tab).</li>
+                <li>Ejercicio práctico: analiza tu portfolio y corrige al vuelo.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Retroalimentación grupal & Tareas autónomas</h3>
+            <ul>
+                <li>Compartir URL en pantalla; feedback rápido (2 min por grupo).</li>
+            </ul>
+            <h4>Tareas autónomas prox semana:</h4>
+            <ul>
+                <li>Documentar y comentar tu código (JSDoc para funciones JS).</li>
+                <li>Aplicar correcciones SEO/ACCES en todos los archivos.</li>
+                <li>Subir cambios y etiquetar versión v1.1-semana7.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Recapitulación y objetivos</h3>
+            <ul>
+                <li>Revisión commits v1.1-semana7.</li>
+                <li>Enfoque: JavaScript avanzado y feedback dinámico.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Validaciones JS avanzadas</h3>
+            <ol>
+                <li>
+                    <h4>Validar correo y campos (uso de expresiones regulares):</h4>
+                    <div class="codigo-ejemplo">
+                        <pre><code>const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!emailRegex.test(email)) {
+  showError("Email no válido");
+}</code></pre>
+                    </div>
+                </li>
+                <li>Longitud y caracteres: mínimo/máximo, no caracteres especiales.</li>
+                <li>
+                    <h4>Modularizar validaciones:</h4>
+                    <div class="codigo-ejemplo">
+                        <pre><code>function validarCampo(id, fnValidacion, msgError) { … }
+validarCampo("name", v => v.trim() !== "", "Nombre es obligatorio");
+validarCampo("email", v => emailRegex.test(v), "Email inválido");</code></pre>
+                    </div>
+                </li>
+                <li>Práctica: mejora tu formulario de contacto con estas funciones en tu servidor.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h3>Feedback dinámico & UX</h3>
+            <ul>
+                <li>Mostrar mensajes en línea en lugar de alert().</li>
+                <li>Uso de classList para togglear estados:</li>
+            </ul>
+            <div class="codigo-ejemplo">
+                <pre><code>const msg = document.getElementById("feedback");
+msg.textContent = "Enviado con éxito";
+msg.classList.add("visible");
+setTimeout(()=> msg.classList.remove("visible"), 3000);</code></pre>
+            </div>
+            <ul>
+                <li>Ejercicio: implementa un "toast" o notificación modal en tu portfolio.</li>
+                <li>Prueba en móvil y escritorio.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Revisión final y retroalimentación</h3>
+            <p>Cada dupla revisa el código del compañero:</p>
+            <ul>
+                <li>¿Cumple HTML semántico?</li>
+                <li>¿CSS responsive y selectores limpios?</li>
+                <li>¿JS validaciones y feedback?</li>
+            </ul>
+            <p>Compromisos de mejora: etiqueta v1.2-semana7.</p>
+            <p>Cierre: checklist de entrega para Evaluación 2.</p>
+        </section>
+
+        <section>
+            <h3>Checklist de entrega (Evaluación 2)</h3>
+            <table class="tabla-checklist">
+                <tr>
+                    <th>Ítem</th>
+                </tr>
+                <tr>
+                    <td>HTML validado W3C con estructura semántica</td>
+                </tr>
+                <tr>
+                    <td>CSS con Flexbox, media queries y selectores claros</td>
+                </tr>
+                <tr>
+                    <td>Formulario con validaciones completas en JS</td>
+                </tr>
+                <tr>
+                    <td>Mensajes dinámicos/feedback integrados</td>
+                </tr>
+                <tr>
+                    <td>SEO básico (meta, sitemap, robots)</td>
+                </tr>
+                <tr>
+                    <td>Accesibilidad (ARIA, alt, roles, contraste)</td>
+                </tr>
+                <tr>
+                    <td>Código documentado y comentado (JSDoc)</td>
+                </tr>
+                <tr>
+                    <td>Deploy en servidor real y repositorio en GitHub</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+          <h3>Rúbrica Evaluación 2</h3>
+          <p>La rúbrica de evaluación 2 está disponible para su consulta:</p>
+          <div class="boton-descarga">
+              <a href="../../assets/resources/semanas/semana6/rubrica-evaluacion2.pdf" download class="btn-descargar">
+                  <i class="fas fa-download"></i> Descargar Rúbrica
+              </a>
+          </div>
+      </section>
+    </main>
+    <footer>
+      <p>© 2025 Diseño y Desarrollo Web + IA - TEC UCT - Docente: Cristian Iglesias Vera - cristian.iglesias@uct.cl</p>
+    </footer>
+</body>
+</html>

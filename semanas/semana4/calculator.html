@@ -3,21 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Básica</title>
+    <title>Calculadora JavaScript</title>
+    <link rel="stylesheet" href="../../assets/css/semanas/semana4/style.css">
+    
 </head>
 <body>
-    <h1>Calculadora Básica</h1>
-    <input type="number" id="num1" placeholder="Número 1">
-    <input type="number" id="num2" placeholder="Número 2">
-    <select id="operacion">
-        <option value="sumar">Sumar</option>
-        <option value="restar">Restar</option>
-        <option value="multiplicar">Multiplicar</option>
-        <option value="dividir">Dividir</option>
-    </select>
-    <button onclick="calcular()">Calcular</button>
-    <p id="resultado"></p>
+    <header>
+        <h1>Desarrollo y Diseño Web + IA</h1>
+        <nav>
+            <ul>
+                <li><a href="../../index.html">Inicio</a></li>
+                <a href="#">Semana 3 ▾</a>
+                <ul>
+                    <li><a href="../semana3/index.html">Resumen Semana 3</a></li>
+                    <li><a href="../semana3/htmltags.html">HTML Tags</a></li>
+                    <li><a href="../semana3/selectorescss.html">Selectores CSS</a></li>
+                </ul>
+                <li>
+                    <a href="#">Semana 4 ▾</a>
+                    <ul>
+                        <li><a href="index.html">Resumen Semana 4</a></li>
+                        <li><a href="box-model.html">Box Model</a></li>
+                        <li><a href="oddoreven.html">Par o Impar</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Semana 5 ▾</a>
+                    <ul>
+                      <li><a href="../semana5/index.html">Resumen Semana 5</a></li>
+                      <li><a href="../semana5/dom.html">Manipulación del DOM</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Calculadora JavaScript</h2>
+        <section>
+            <p>Esta es una calculadora básica implementada con JavaScript. Puedes realizar operaciones aritméticas simples.</p>
+            
+            <div class="calculadora">
+                <input type="text" id="pantalla" disabled>
+                <div class="botones">
+                    <button onclick="limpiar()">C</button>
+                    <button onclick="agregarCaracter('(')">(</button>
+                    <button onclick="agregarCaracter(')')">)</button>
+                    <button onclick="agregarCaracter('/')">/</button>
+                    
+                    <button onclick="agregarCaracter('7')">7</button>
+                    <button onclick="agregarCaracter('8')">8</button>
+                    <button onclick="agregarCaracter('9')">9</button>
+                    <button onclick="agregarCaracter('*')">*</button>
+                    
+                    <button onclick="agregarCaracter('4')">4</button>
+                    <button onclick="agregarCaracter('5')">5</button>
+                    <button onclick="agregarCaracter('6')">6</button>
+                    <button onclick="agregarCaracter('-')">-</button>
+                    
+                    <button onclick="agregarCaracter('1')">1</button>
+                    <button onclick="agregarCaracter('2')">2</button>
+                    <button onclick="agregarCaracter('3')">3</button>
+                    <button onclick="agregarCaracter('+')">+</button>
+                    
+                    <button onclick="agregarCaracter('0')">0</button>
+                    <button onclick="agregarCaracter('.')">.</button>
+                    <button onclick="borrarUltimo()">←</button>
+                    <button onclick="calcular()">=</button>
+                </div>
+            </div>
+            
+            <h3>Código JavaScript</h3>
+            <p>Esta calculadora utiliza las siguientes funciones JavaScript:</p>
+            <pre><code>// Agregar un carácter a la pantalla
+function agregarCaracter(caracter) {
+    document.getElementById('pantalla').value += caracter;
+}
 
-    <script src="../../assets/js/calculator.js"></script>
+// Calcular el resultado
+function calcular() {
+    try {
+        document.getElementById('pantalla').value = 
+            eval(document.getElementById('pantalla').value);
+    } catch (error) {
+        document.getElementById('pantalla').value = 'Error';
+    }
+}
+
+// Limpiar la pantalla
+function limpiar() {
+    document.getElementById('pantalla').value = '';
+}
+
+// Borrar el último carácter
+function borrarUltimo() {
+    let pantalla = document.getElementById('pantalla');
+    pantalla.value = pantalla.value.slice(0, -1);
+}</code></pre>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Diseño y Desarrollo Web + IA - TEC UCT - Docente: Cristian Iglesias Vera - cristian.iglesias@uct.cl</p>
+    </footer>
+
+    <script>
+        function agregarCaracter(caracter) {
+            document.getElementById('pantalla').value += caracter;
+        }
+        
+        function calcular() {
+            try {
+                document.getElementById('pantalla').value = 
+                    eval(document.getElementById('pantalla').value);
+            } catch (error) {
+                document.getElementById('pantalla').value = 'Error';
+            }
+        }
+        
+        function limpiar() {
+            document.getElementById('pantalla').value = '';
+        }
+        
+        function borrarUltimo() {
+            let pantalla = document.getElementById('pantalla');
+            pantalla.value = pantalla.value.slice(0, -1);
+        }
+    </script>
 </body>
 </html>

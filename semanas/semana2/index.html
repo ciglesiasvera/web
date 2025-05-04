@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clase: Introducción a HTML5</title>
+  <link rel="stylesheet" href="../../assets/css/semanas/semana2/style.css">
+</head>
+<body>
+  <header>
+    <h1>Desarrollo y Diseño Web + IA</h1>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Inicio</a></li>
+        <li><a href="../semana1/index.html">Semana 1</a></li>
+        <li>
+          <a href="#">Semana 3 ▾</a>
+          <ul>
+            <li><a href="../semana3/index.html">Resumen Semana 3</a></li>
+            <li><a href="../semana3/htmltags.html">HTML Tags</a></li>
+            <li><a href="../semana3/selectorescss.html">Selectores CSS</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Objetivos de la Clase</h2>
+      <ul>
+        <li>Comprender la estructura básica de un documento HTML.</li>
+        <li>Identificar y utilizar etiquetas, elementos y atributos.</li>
+        <li>Entender la importancia del <code>&lt;!DOCTYPE&gt;</code>, <code>&lt;head&gt;</code> y <code>&lt;body&gt;</code>.</li>
+        <li>Introducir las etiquetas semánticas de HTML5 y su uso.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Parte 1: Estructura Básica</h2>
+      <h3>1. ¿Qué es HTML?</h3>
+      <p><strong>HTML</strong> (HyperText Markup Language) es el lenguaje estándar para crear páginas web. Define la estructura del contenido.</p>
+
+      <h3>2. Estructura Básica</h3>
+      <ul>
+        <li><strong>DOCTYPE</strong>: <code>&lt;!DOCTYPE html&gt;</code> define la versión de HTML.</li>
+        <li><strong>&lt;html&gt;</strong>: raíz del documento HTML. Ejemplo: <code>&lt;html lang="es"&gt;</code></li>
+        <li><strong>&lt;head&gt;</strong>: contiene metadatos.
+          <pre><code>&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Título&lt;/title&gt;
+&lt;/head&gt;
+          </code></pre>
+        </li>
+        <li><strong>&lt;body&gt;</strong>: contiene el contenido visible.
+          <pre><code>&lt;body&gt;
+  &lt;h1&gt;Bienvenidos a mi Página&lt;/h1&gt;
+  &lt;p&gt;Este es un párrafo.&lt;/p&gt;
+&lt;/body&gt;
+          </code></pre>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Parte 2: Etiquetas, Elementos y Atributos</h2>
+      <ul>
+        <li><strong>Etiqueta:</strong> <code>&lt;p&gt;Texto&lt;/p&gt;</code></li>
+        <li><strong>Elemento:</strong> <code>&lt;a href="#"&gt;Enlace&lt;/a&gt;</code></li>
+        <li><strong>Atributo:</strong> <code>&lt;img src="img.jpg" alt="Descripción"&gt;</code></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Parte 3: Etiquetas Semánticas de HTML5</h2>
+
+      <h3>1. ¿Por qué son importantes?</h3>
+      <ul>
+        <li><strong>Semántica:</strong> Ayuda a entender mejor el contenido.</li>
+        <li><strong>Accesibilidad:</strong> Mejora la experiencia del usuario.</li>
+      </ul>
+
+      <h3>2. Principales etiquetas semánticas</h3>
+      <ul>
+        <li><code>&lt;header&gt;</code>: Encabezado principal.</li>
+        <li><code>&lt;nav&gt;</code>: Navegación.</li>
+        <li><code>&lt;article&gt;</code>: Contenido autónomo.</li>
+        <li><code>&lt;aside&gt;</code>: Contenido relacionado.</li>
+        <li><code>&lt;footer&gt;</code>: Pie de página.</li>
+      </ul>
+
+      <aside>
+        <strong>Ejemplo:</strong>
+        <pre><code>&lt;article&gt;
+  &lt;h2&gt;Título&lt;/h2&gt;
+  &lt;p&gt;Contenido del artículo.&lt;/p&gt;
+&lt;/article&gt;
+        </code></pre>
+      </aside>
+    </section>
+
+    <section>
+      <h2>Actividades Prácticas</h2>
+      <ul>
+        <li>Ejercicio 1: Crear un documento HTML con las etiquetas <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> y <code>&lt;body&gt;</code>.</li>
+        <li>Ejercicio 2: Usar etiquetas semánticas en un documento HTML.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Bibliografía y Enlaces</h2>
+      <ul>
+        <li><a href="https://www.w3schools.com" target="_blank">W3Schools</a></li>
+        <li><a href="https://www.w3.org/" target="_blank">W3C</a></li>
+        <li><a href="https://validator.w3.org/" target="_blank">Validador de HTML</a></li>
+        <li><a href="https://developer.chrome.com/docs/devtools?hl=es-419" target="_blank">Herramientas de desarrollo en Chrome</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Diseño y Desarrollo Web + IA - TEC UCT - Docente: Cristian Iglesias Vera - cristian.iglesias@uct.cl</p>
+  </footer>
+</body>
+</html>

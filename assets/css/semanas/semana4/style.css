@@ -1,0 +1,206 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header, footer {
+    background-color: #009688;
+    color: white;
+    padding: 1em;
+    text-align: center;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  main {
+    padding: 2em;
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5em;
+    margin-bottom: 1.5em;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  h2 {
+    color: #00695c;
+  }
+  
+  h3 {
+    color: #00796b;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0.5em;
+  }
+  
+  h4 {
+    color: #00897b;
+  }
+  
+  code {
+    background-color: #eef;
+    padding: 0.2em 0.5em;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+  
+  pre {
+    background-color: #f5f5f5;
+    padding: 1em;
+    border-radius: 5px;
+    overflow-x: auto;
+  }
+  
+  ul {
+    padding-left: 1.2em;
+  }
+  
+  aside {
+    background-color: #e0f2f1;
+    border-left: 5px solid #00796b;
+    padding: 1em;
+    margin-top: 1em;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Estilos para el menú desplegable */
+  nav ul ul {
+    display: none;
+    position: absolute;
+    background-color: #009688;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 0;
+  }
+  
+  nav ul li:hover > ul {
+    display: block;
+  }
+  
+  nav ul ul li {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+  
+  nav ul ul li a {
+    padding: 12px 16px;
+    display: block;
+  }
+  
+  nav ul li {
+    position: relative;
+  }
+
+  .btn-volver {
+      display: inline-block;
+      background-color: #009688;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-bottom: 20px;
+  }
+  .btn-volver:hover {
+      background-color: #00796b;
+  }
+
+        .calculadora {
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            width: 300px;
+            padding: 20px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .calculadora input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .botones {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        
+        .botones button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #009688;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .botones button:hover {
+            background-color: #00796b;
+        }
+        
+        .contenedor {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        
+        input {
+            border: 1px solid #ddd;
+            width: 200px;
+        }
+        
+        button {
+            background-color: #009688;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #00796b;
+        }
+        
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+            min-height: 24px;
+        }

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulación del DOM y Eventos con Javascript</title>
+    <link rel="stylesheet" href="../../assets/css/semanas/semana5/style.css">
+</head>
+<body>
+    <header>
+        <h1>Desarrollo y Diseño Web + IA</h1>
+        <nav>
+            <ul>
+                <li><a href="../../index.html">Inicio</a></li>
+                <li><a href="../semana4/index.html">Semana 4</a></li>
+                <li>
+                    <a href="#">Semana 5 ▾</a>
+                    <ul>
+                        <li><a href="index.html">Resumen Semana 5</a></li>
+                    </ul>
+                </li>
+                <li><a href="../semana6/index.html">Semana 6</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Manipulación del DOM y Eventos con Javascript</h2>
+
+        <section>
+            <h3>Objetivo de la clase:</h3>
+            <ul>
+                <li>Entender qué es el DOM y cómo manipularlo.</li>
+                <li>Crear una galería de imágenes interactiva.</li>
+                <li>Programar un pequeño juego de adivinar el número.</li>
+                <li>Integrar eventos para que las páginas web respondan a las acciones del usuario.</li>
+            </ul>
+        </section>
+
+        <!-- 1. Galería de imágenes -->
+        <section>
+            <h3>Galería de Imágenes Interactiva</h3>
+            <div id="galeria" class="galeria">
+                <img src="../../assets/imgs/img1.jpg" alt="Imagen de Gordon Freeman del juego Half Life">
+                <img src="../../assets/imgs/img2.jpg" alt="Imagen de Jack Carver del juego Far Cry">
+                <img src="../../assets/imgs/img3.jpg" alt="Imagen de Desmond Miles del juego Assasin's Creed">
+            </div>
+        </section>
+
+        <!-- 2. Juego Adivina el número -->
+        <section>
+            <h3>Juego: Adivina el número</h3>
+            <div class="juego-container">
+                <input type="number" id="numeroIntento" placeholder="Tu número">
+                <button id="botonAdivinar">Adivinar</button>
+                <p id="resultado"></p>
+            </div>
+        </section>
+
+        <!-- 3. Integración de eventos -->
+        <section>
+            <h3>Eventos del teclado y mouse</h3>
+            <div class="eventos-container">
+                <button id="botonEvento">Haz clic en mí</button>
+                <p id="eventoTexto">Esperando interacción...</p>
+                <input type="text" id="inputEvento" placeholder="Escribe algo">
+            </div>
+        </section>
+
+        <!-- Contador de clics -->
+        <section>
+            <h3>Contador de Clics 🖱️</h3>
+            <div class="contador-container">
+                <p id="contador">Clics: 0</p>
+                <button id="boton-contador">Haz clic aquí</button>
+            </div>
+        </section>
+
+        <!-- Movimiento con el teclado -->
+        <section>
+            <h3>Mueve la caja con las flechas del teclado 🎮</h3>
+            <div class="caja-container">
+                <div id="caja" style="width:50px; height:50px; background:red; position:relative; top:0; left:0;"></div>
+                <p class="instrucciones">Usa las flechas del teclado para mover la caja roja</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Diseño y Desarrollo Web + IA - TEC UCT - Docente: Cristian Iglesias Vera - cristian.iglesias@uct.cl</p>
+    </footer>
+
+    <script src="../../assets/js/galeria.js"></script>
+    <script src="../../assets/js/adivina-numero.js"></script>
+    <script src="../../assets/js/eventos-extra.js"></script>
+</body>
+</html>

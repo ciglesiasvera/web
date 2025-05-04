@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción a PHP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/semanas/semana7/style.css">
+</head>
+<body>
+    <header>
+        <h1>Desarrollo y Diseño Web + IA</h1>
+        <nav>
+            <ul>
+                <li><a href="../../index.html">Inicio</a></li>
+                <li><a href="../semana6/index.html">Semana 6</a></li>
+                <li>
+                    <a href="#">Semana 7 ▾</a>
+                    <ul>
+                        <li><a href="frontend/formulario.html">Formulario Ejemplo</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Semana 8 ▾</a>
+                    <ul>
+                        <li><a href="../semana8/index.html">Resumen Semana 8</a></li>
+                        <li><a href="../semana8/frontend/blog.html">Blog CMS</a></li>
+                    </ul>
+                </li>   
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Introducción a PHP y Primeros Pasos con Servidor Local</h2>
+        
+        <section>
+            <h3>Objetivo</h3>
+            <p>Al finalizar la clase, estarán familiarizados con la sintaxis básica de PHP, 
+            sabrán cómo crear un servidor local y podrán ejecutar su primer script en PHP.</p>
+        </section>
+
+        <section>
+            <h3>1. Introducción a PHP: Sintaxis y Variables</h3>
+            <p>PHP (Hypertext Preprocessor) es un lenguaje de programación del lado del servidor 
+            utilizado para desarrollar sitios web dinámicos. Permite interactuar con bases de 
+            datos, procesar formularios y mucho más.</p>
+
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;?php
+    echo "Hola Mundo!";
+?&gt;</code></pre>
+            </div>
+
+            <ul>
+                <li><code>&lt;?php ... ?&gt;</code> es la etiqueta que indica que todo lo que está dentro es código PHP.</li>
+                <li><code>echo</code> es una instrucción que imprime algo en el navegador.</li>
+            </ul>
+
+            <h4>Variables en PHP</h4>
+            <p>Las variables en PHP se definen con el símbolo $ seguido del nombre de la variable. Por ejemplo:</p>
+
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;?php
+    $nombre = "Juan";
+    $edad = 16;
+    echo "Hola, mi nombre es " . $nombre . " y tengo " . $edad . " años.";
+?&gt;</code></pre>
+            </div>
+
+            <p><strong>Explicación:</strong></p>
+            <ul>
+                <li>En PHP, no es necesario declarar el tipo de una variable; PHP lo infiere automáticamente.</li>
+                <li>Se utiliza "." para concatenar cadenas de texto.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>2. Demo: Hola Mundo en Servidor Local</h3>
+            <h4>Paso 1: Descargar e instalar XAMPP/WAMP</h4>
+            
+            <h4>Paso 2: Iniciar el servidor local</h4>
+            <ul>
+                <li>Abrir el panel de control de XAMPP/WAMP y hacer clic en "Start" en los módulos de Apache y MySQL.</li>
+                <li>Esto activa el servidor local, el cual se puede usar para ejecutar scripts PHP.</li>
+            </ul>
+
+            <h4>Paso 3: Crear un archivo PHP</h4>
+            <ul>
+                <li>En el directorio de XAMPP o WAMP, buscar la carpeta htdocs (XAMPP) o www (WAMP).</li>
+                <li>Crear un archivo nuevo llamado index.php dentro de esa carpeta.</li>
+                <li>Escribir el siguiente código en el archivo:</li>
+            </ul>
+
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;?php
+    echo "¡Hola Mundo desde el servidor local!";
+?&gt;</code></pre>
+            </div>
+
+            <ul>
+                <li>Abrir el navegador y escribir http://localhost/index.php en la barra de direcciones.</li>
+                <li>Se verá el mensaje "¡Hola Mundo desde el servidor local!".</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>3. Ejercicio: Formulario de Contacto (GET/POST)</h3>
+            <p>Objetivo: Crear un formulario HTML básico y aprender a procesar datos con PHP usando los métodos GET y POST.</p>
+
+            <h4>Formulario en HTML:</h4>
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;form action="procesar.php" method="POST"&gt;
+    Nombre: &lt;input type="text" name="nombre" required&gt;&lt;br&gt;
+    Email: &lt;input type="email" name="email" required&gt;&lt;br&gt;
+    Mensaje: &lt;textarea name="mensaje" required&gt;&lt;/textarea&gt;&lt;br&gt;
+    &lt;input type="submit" value="Enviar"&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+
+            <h4>Procesando los datos con PHP (archivo procesar.php):</h4>
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $nombre = $_POST['nombre'];
+        $email = $_POST['email'];
+        $mensaje = $_POST['mensaje'];
+
+        echo "Gracias por tu mensaje, " . $nombre . ".&lt;br&gt;";
+        echo "Tu email es: " . $email . "&lt;br&gt;";
+        echo "Mensaje: " . nl2br($mensaje);
+    }
+?&gt;</code></pre>
+            </div>
+
+            <p><strong>Explicación:</strong></p>
+            <ul>
+                <li>El formulario envía los datos a través del método POST al archivo procesar.php.</li>
+                <li>Se usa $_POST para acceder a los datos enviados.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>4. Validación de Datos</h3>
+            <p>Objetivo: Aprender cómo validar los datos en PHP antes de procesarlos.</p>
+
+            <h4>Ejemplo de validación de datos:</h4>
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $nombre = $_POST['nombre'];
+        $email = $_POST['email'];
+        
+        // Validar que el nombre no esté vacío
+        if (empty($nombre)) {
+            echo "El nombre es obligatorio.&lt;br&gt;";
+        }
+        
+        // Validar formato del email
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "El correo electrónico no es válido.&lt;br&gt;";
+        }
+    }
+?&gt;</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h3>Mezclando PHP y HTML</h3>
+            <p>El archivo PHP puede tener código PHP y código HTML mezclado. Por ejemplo:</p>
+
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;?php
+$mensaje = "Bienvenido a la tienda de frutas";
+?&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;title&gt;Venta de Frutas&lt;/title&gt;
+    &lt;link rel="stylesheet" href="estilos.css"&gt;
+    &lt;script src="validaciones.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;&lt;?php echo $mensaje; ?&gt;&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+
+            <h4>estilos.css</h4>
+            <div class="codigo-ejemplo">
+                <pre><code>body {
+    background-color: lightyellow;
+    font-family: Arial, sans-serif;
+}</code></pre>
+            </div>
+
+            <h4>validaciones.js</h4>
+            <div class="codigo-ejemplo">
+                <pre><code>function validarFormulario() {
+    let kilos = document.getElementById('kilos').value;
+    if (kilos <= 0) {
+        alert('Por favor ingrese kilos mayores a 0.');
+        return false;
+    }
+    return true;
+}</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h3>Resumen de herramientas</h3>
+            <table class="tabla-seo">
+                <tr>
+                    <th>Herramienta</th>
+                    <th>Cómo usarla en PHP</th>
+                </tr>
+                <tr>
+                    <td>HTML</td>
+                    <td>Normal, mezclado con PHP (&lt;?php ?&gt;)</td>
+                </tr>
+                <tr>
+                    <td>CSS</td>
+                    <td>&lt;link&gt; en el &lt;head&gt;, o &lt;style&gt; en el HTML</td>
+                </tr>
+                <tr>
+                    <td>JavaScript</td>
+                    <td>&lt;script&gt; en el HTML o archivo externo</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h3>Ejemplo completo</h3>
+            <p>Supongamos que tenemos:</p>
+            <ul>
+                <li>index.php</li>
+                <li>estilos.css</li>
+                <li>validaciones.js</li>
+            </ul>
+
+            <h4>Así sería index.php:</h4>
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;?php
+$nombre = "Juan";
+?&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Mi página PHP&lt;/title&gt;
+    &lt;link rel="stylesheet" href="estilos.css"&gt;
+    &lt;script src="validaciones.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hola, &lt;?php echo $nombre; ?&gt;!&lt;/h1&gt;
+
+    &lt;form onsubmit="return validarFormulario()" method="POST"&gt;
+        &lt;label for="edad"&gt;Edad:&lt;/label&gt;
+        &lt;input type="number" id="edad" name="edad"&gt;
+        &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+
+            <h4>estilos.css:</h4>
+            <div class="codigo-ejemplo">
+                <pre><code>body {
+    background-color: #f0f8ff;
+    text-align: center;
+    margin-top: 50px;
+}
+
+input, button {
+    padding: 10px;
+    margin-top: 10px;
+}</code></pre>
+            </div>
+
+            <h4>validaciones.js:</h4>
+            <div class="codigo-ejemplo">
+                <pre><code>function validarFormulario() {
+    let edad = document.getElementById('edad').value;
+    if (edad < 18) {
+        alert("Debes ser mayor de edad.");
+        return false;
+    }
+    return true;
+}</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h3>Validación y Verificación del Login</h3>
+            <h4>Archivo login.php:</h4>
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;?php
+    // Datos de ejemplo
+    $usuario_valido = "admin";
+    $contraseña_valida = "1234";
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $usuario = $_POST['usuario'];
+        $contraseña = $_POST['contraseña'];
+        
+        if ($usuario == $usuario_valido && $contraseña == $contraseña_valida) {
+            echo "¡Bienvenido, " . $usuario . "!";
+        } else {
+            echo "Usuario o contraseña incorrectos.";
+        }
+    }
+?&gt;</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h3>5. Operador de Concatenación</h3>
+            <p>(Unir textos)</p>
+            <table class="tabla-seo">
+                <tr>
+                    <th>Operador</th>
+                    <th>Significado</th>
+                    <th>Ejemplo</th>
+                </tr>
+                <tr>
+                    <td>.</td>
+                    <td>Concatenar textos</td>
+                    <td>$nombre . " " . $apellido</td>
+                </tr>
+            </table>
+
+            <h4>Ejemplo:</h4>
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;?php
+$nombre = "Juan";
+$apellido = "Pérez";
+echo $nombre . " " . $apellido; // Resultado: Juan Pérez
+?&gt;</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h3>TIPS</h3>
+            <ol>
+                <li>
+                    <h4>No olvidar el servidor</h4>
+                    <p>PHP no se ejecuta directamente en el navegador. Siempre debe pasar por un servidor local como XAMPP o WAMP.</p>
+                </li>
+                <li>
+                    <h4>Siempre abrir y cerrar el PHP correctamente</h4>
+                    <div class="codigo-ejemplo">
+                        <pre><code>&lt;?php
+// Código PHP aquí
+?&gt;</code></pre>
+                    </div>
+                </li>
+                <li>
+                    <h4>Cuidado con los errores de tipeo</h4>
+                    <p>PHP es sensible si olvidas un ; al final de una línea.</p>
+                    <div class="codigo-ejemplo">
+                        <pre><code>echo "Hola" // Incorrecto, falta punto y coma
+echo "Hola"; // Correcto</code></pre>
+                    </div>
+                </li>
+                <li>
+                    <h4>Comentar el código</h4>
+                    <div class="codigo-ejemplo">
+                        <pre><code>// Este es un comentario de una sola línea
+/*
+Este es un comentario
+de varias líneas
+*/</code></pre>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <h3>GET y POST</h3>
+            <p>Cuando un usuario envía un formulario en una página web, los datos viajan al servidor usando uno de dos métodos:</p>
+            <ul>
+                <li>GET</li>
+                <li>POST</li>
+            </ul>
+
+            <h4>¿Qué es GET?</h4>
+            <p>Envía los datos en la URL (en la barra de direcciones del navegador).</p>
+            <p>Se ve algo como:</p>
+            <div class="codigo-ejemplo">
+                <pre><code>https://mitienda.com/formulario.php?nombre=Juan&edad=16</code></pre>
+            </div>
+            <p>Se usa para cosas simples, como buscar algo o navegar entre páginas.</p>
+
+            <h4>Ventajas:</h4>
+            <ul>
+                <li>Es rápido.</li>
+                <li>Se puede guardar o compartir el enlace fácilmente.</li>
+                <li>Ideal para búsquedas, filtros, paginaciones, etc.</li>
+            </ul>
+
+            <h4>Desventajas:</h4>
+            <ul>
+                <li>Limitado en cantidad de datos (URL máx. ~2000 caracteres).</li>
+                <li>No seguro para datos sensibles (contraseñas, tarjetas).</li>
+                <li>No sirve para subir archivos.</li>
+            </ul>
+
+            <h4>¿Qué es POST?</h4>
+            <p>Envía los datos "por detrás", no se ven en la URL.</p>
+            <p>Se usa para formularios más complejos, como registros, inicios de sesión, etc.</p>
+
+            <h4>Ventajas:</h4>
+            <ul>
+                <li>Puede enviar mucha más información.</li>
+                <li>Más seguro para datos sensibles.</li>
+                <li>Permite subir archivos.</li>
+            </ul>
+
+            <h4>Desventajas:</h4>
+            <ul>
+                <li>No se puede guardar o compartir el enlace con los datos.</li>
+                <li>No se puede volver atrás fácilmente (el navegador pregunta si quieres reenviar el formulario).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Actividad Autónoma</h3>
+            <h4>Objetivo de Aprendizaje:</h4>
+            <ul>
+                <li>Comprender mejor el manejo de formularios en PHP.</li>
+                <li>Aprender a trabajar con condiciones (if, switch).</li>
+                <li>Validar entradas de usuarios.</li>
+                <li>Resolver un problema real (venta/cobro).</li>
+            </ul>
+
+            <h4>Contexto:</h4>
+            <p>Un pequeño negocio familiar de frutas quiere tener una calculadora web para saber cuánto debe cobrar según los kilos que vende. Cada fruta tiene un precio distinto por kilo.</p>
+
+            <h4>Precios por kilo:</h4>
+            <ul>
+                <li>Manzana: $1200</li>
+                <li>Plátano: $1000</li>
+                <li>Naranja: $800</li>
+            </ul>
+
+            <p>Crea una página web en PHP donde:</p>
+            <ul>
+                <li>El usuario pueda elegir una fruta (Manzana, Plátano o Naranja) desde un menú desplegable.</li>
+                <li>El usuario ingrese los kilos que desea comprar.</li>
+                <li>Al hacer clic en "Calcular", se debe mostrar el valor total a pagar.</li>
+            </ul>
+
+            <h4>Requisitos:</h4>
+            <ul>
+                <li>Usar formulario HTML (&lt;form&gt;).</li>
+                <li>Usar método POST.</li>
+                <li>Validar que el número de kilos sea mayor que 0.</li>
+                <li>Mostrar mensajes de error claros si se elige una fruta inválida o si los kilos son 0 o negativos.</li>
+            </ul>
+
+            <p>El diseño puede ser básico (no es prioridad ahora).</p>
+
+            <h4>Entrega:</h4>
+            <ol>
+                <li>Un archivo venta_frutas.php.</li>
+                <li>Funcional en servidor local (XAMPP o WAMP) y servidor en internet.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h3>Ejemplo de solución para la actividad</h3>
+            <p>A continuación se muestra un ejemplo de cómo podría ser la solución para la actividad de la calculadora de frutas:</p>
+
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Venta de Frutas&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .error {
+            color: red;
+            margin-bottom: 10px;
+        }
+        .resultado {
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        label, select, input, button {
+            margin-bottom: 10px;
+            display: block;
+        }
+        select, input, button {
+            padding: 8px;
+            width: 100%;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Calculadora de Venta de Frutas&lt;/h1&gt;
+    
+    &lt;?php
+    // Inicializar variables
+    $fruta = "";
+    $kilos = "";
+    $error = "";
+    $total = 0;
+    $mostrarResultado = false;
+    
+    // Procesar el formulario cuando se envía
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Obtener y validar la fruta
+        if (isset($_POST['fruta']) && !empty($_POST['fruta'])) {
+            $fruta = $_POST['fruta'];
+        } else {
+            $error .= "Por favor seleccione una fruta.&lt;br&gt;";
+        }
+        
+        // Obtener y validar los kilos
+        if (isset($_POST['kilos']) && !empty($_POST['kilos'])) {
+            $kilos = floatval($_POST['kilos']);
+            if ($kilos <= 0) {
+                $error .= "La cantidad de kilos debe ser mayor que 0.&lt;br&gt;";
+            }
+        } else {
+            $error .= "Por favor ingrese la cantidad de kilos.&lt;br&gt;";
+        }
+        
+        // Si no hay errores, calcular el total
+        if (empty($error)) {
+            switch ($fruta) {
+                case 'manzana':
+                    $precio = 1200;
+                    break;
+                case 'platano':
+                    $precio = 1000;
+                    break;
+                case 'naranja':
+                    $precio = 800;
+                    break;
+                default:
+                    $error = "Fruta no válida.";
+                    break;
+            }
+            
+            if (empty($error)) {
+                $total = $kilos * $precio;
+                $mostrarResultado = true;
+            }
+        }
+    }
+    ?&gt;
+    
+    &lt;!-- Mostrar errores si existen --&gt;
+    &lt;?php if (!empty($error)): ?&gt;
+        &lt;div class="error"&gt;&lt;?php echo $error; ?&gt;&lt;/div&gt;
+    &lt;?php endif; ?&gt;
+    
+    &lt;!-- Formulario --&gt;
+    &lt;form method="POST" action="&lt;?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?&gt;"&gt;
+        &lt;label for="fruta"&gt;Seleccione la fruta:&lt;/label&gt;
+        &lt;select id="fruta" name="fruta" required&gt;
+            &lt;option value="" &lt;?php if ($fruta == "") echo "selected"; ?&gt;&gt;-- Seleccione una fruta --&lt;/option&gt;
+            &lt;option value="manzana" &lt;?php if ($fruta == "manzana") echo "selected"; ?&gt;&gt;Manzana ($1200/kg)&lt;/option&gt;
+            &lt;option value="platano" &lt;?php if ($fruta == "platano") echo "selected"; ?&gt;&gt;Plátano ($1000/kg)&lt;/option&gt;
+            &lt;option value="naranja" &lt;?php if ($fruta == "naranja") echo "selected"; ?&gt;&gt;Naranja ($800/kg)&lt;/option&gt;
+        &lt;/select&gt;
+        
+        &lt;label for="kilos"&gt;Cantidad de kilos:&lt;/label&gt;
+        &lt;input type="number" id="kilos" name="kilos" step="0.01" min="0.01" value="&lt;?php echo $kilos; ?&gt;" required&gt;
+        
+        &lt;button type="submit"&gt;Calcular Precio&lt;/button&gt;
+    &lt;/form&gt;
+    
+    &lt;!-- Mostrar resultado si no hay errores --&gt;
+    &lt;?php if ($mostrarResultado): ?&gt;
+        &lt;div class="resultado"&gt;
+            &lt;h2&gt;Resultado:&lt;/h2&gt;
+            &lt;p&gt;Fruta: &lt;strong&gt;&lt;?php 
+                switch ($fruta) {
+                    case 'manzana':
+                        echo "Manzana";
+                        break;
+                    case 'platano':
+                        echo "Plátano";
+                        break;
+                    case 'naranja':
+                        echo "Naranja";
+                        break;
+                }
+            ?&gt;&lt;/strong&gt;&lt;/p&gt;
+            &lt;p&gt;Precio por kilo: &lt;strong&gt;$&lt;?php echo number_format($precio, 0, ',', '.'); ?&gt;&lt;/strong&gt;&lt;/p&gt;
+            &lt;p&gt;Cantidad: &lt;strong&gt;&lt;?php echo $kilos; ?&gt; kg&lt;/strong&gt;&lt;/p&gt;
+            &lt;p&gt;Total a pagar: &lt;strong&gt;$&lt;?php echo number_format($total, 0, ',', '.'); ?&gt;&lt;/strong&gt;&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;?php endif; ?&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+
+            <p>Este código combina HTML, CSS y PHP en un solo archivo para crear una calculadora de precios de frutas. Incluye:</p>
+            <ul>
+                <li>Validación de datos en el servidor</li>
+                <li>Manejo de errores</li>
+                <li>Cálculo del precio total</li>
+                <li>Persistencia de los valores del formulario</li>
+                <li>Formato de números para mejor legibilidad</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Lista de Operadores en PHP</h3>
+            <h4>1. Operadores Aritméticos</h4>
+            <table class="tabla-seo">
+                <tr>
+                    <th>Operador</th>
+                    <th>Significado</th>
+                    <th>Ejemplo</th>
+                </tr>
+                <tr>
+                    <td>+</td>
+                    <td>Suma</td>
+                    <td>$a + $b</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>Resta</td>
+                    <td>$a - $b</td>
+                </tr>
+                <tr>
+                    <td>*</td>
+                    <td>Multiplicación</td>
+                    <td>$a * $b</td>
+                </tr>
+                <tr>
+                    <td>/</td>
+                    <td>División</td>
+                    <td>$a / $b</td>
+                </tr>
+                <tr>
+                    <td>%</td>
+                    <td>Módulo (resto)</td>
+                    <td>$a % $b</td>
+                </tr>
+            </table>
+
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;?php
+echo 5 + 3; // Resultado: 8
+?&gt;</code></pre>
+            </div>
+
+            <h4>2. Operadores de Asignación</h4>
+            <p>(Para asignar valores a variables)</p>
+            <table class="tabla-seo">
+                <tr>
+                    <th>Operador</th>
+                    <th>Significado</th>
+                    <th>Ejemplo</th>
+                </tr>
+                <tr>
+                    <td>=</td>
+                    <td>Asignación simple</td>
+                    <td>$a = 5</td>
+                </tr>
+                <tr>
+                    <td>+=</td>
+                    <td>Suma y asignación</td>
+                    <td>$a += 3 (igual a $a = $a + 3)</td>
+                </tr>
+                <tr>
+                    <td>-=</td>
+                    <td>Resta y asignación</td>
+                    <td>$a -= 3</td>
+                </tr>
+                <tr>
+                    <td>*=</td>
+                    <td>Multiplicación y asignación</td>
+                    <td>$a *= 3</td>
+                </tr>
+                <tr>
+                    <td>/=</td>
+                    <td>División y asignación</td>
+                    <td>$a /= 3</td>
+                </tr>
+            </table>
+
+            <h4>3. Operadores de Comparación</h4>
+            <p>(Para comparar dos valores)</p>
+            <table class="tabla-seo">
+                <tr>
+                    <th>Operador</th>
+                    <th>Significado</th>
+                    <th>Ejemplo</th>
+                </tr>
+                <tr>
+                    <td>==</td>
+                    <td>Igual a</td>
+                    <td>$a == $b</td>
+                </tr>
+                <tr>
+                    <td>!= o <></td>
+                    <td>Distinto de</td>
+                    <td>$a != $b</td>
+                </tr>
+                <tr>
+                    <td>></td>
+                    <td>Mayor que</td>
+                    <td>$a > $b</td>
+                </tr>
+                <tr>
+                    <td><</td>
+                    <td>Menor que</td>
+                    <td>$a < $b</td>
+                </tr>
+                <tr>
+                    <td>>=</td>
+                    <td>Mayor o igual que</td>
+                    <td>$a >= $b</td>
+                </tr>
+                <tr>
+                    <td><=</td>
+                    <td>Menor o igual que</td>
+                    <td>$a <= $b</td>
+                </tr>
+                <tr>
+                    <td>===</td>
+                    <td>Igual en valor y tipo</td>
+                    <td>$a === $b</td>
+                </tr>
+                <tr>
+                    <td>!==</td>
+                    <td>Diferente en valor o tipo</td>
+                    <td>$a !== $b</td>
+                </tr>
+            </table>
+
+            <h4>4. Operadores Lógicos</h4>
+            <p>(Para combinar condiciones)</p>
+            <table class="tabla-seo">
+                <tr>
+                    <th>Operador</th>
+                    <th>Significado</th>
+                    <th>Ejemplo</th>
+                </tr>
+                <tr>
+                    <td>&& o and</td>
+                    <td>Y (AND)</td>
+                    <td>$a && $b</td>
+                </tr>
+                <tr>
+                    <td>|| o or</td>
+                    <td>O (OR)</td>
+                    <td>$a || $b</td>
+                </tr>
+                <tr>
+                    <td>!</td>
+                    <td>No (NOT)</td>
+                    <td>!$a</td>
+                </tr>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Diseño y Desarrollo Web + IA - TEC UCT - Docente: Cristian Iglesias Vera - cristian.iglesias@uct.cl</p>
+    </footer>
+</body>
+</html>
+
