@@ -1,0 +1,114 @@
+<!--
+
+**************************************************
+1. Lista de Operadores en PHP
+Operadores Aritméticos
+Operador | Significado    | Ejemplo
++        | Suma           | $a + $b
+-        | Resta          | $a - $b
+*        | Multiplicación | $a * $b
+/        | División       | $a / $b
+%        | Módulo (resto) | $a % $b
+
+Ejemplo:
+<?php
+echo 5 + 3; // Resultado: 8
+?>
+
+2. Operadores de Asignación
+(Para asignar valores a variables)
+Operador | Significado                 | Ejemplo
+=        | Asignación simple           | $a = 5
++=       | Suma y asignación           | $a += 3  (igual a $a = $a + 3)
+-=       | Resta y asignación          | $a -= 3
+*=       | Multiplicación y asignación | $a *= 3
+/=       | División y asignación       | $a /= 3
+
+3. Operadores de Comparación
+(Para comparar dos valores)
+Operador | Significado               | Ejemplo
+==       | Igual a                   | $a == $b
+!= o <>  | Distinto de               | $a != $b
+>        | Mayor que                 | $a > $b
+<        | Menor que                 | $a < $b
+>=       | Mayor o igual que         | $a >= $b
+<=       | Menor o igual que         | $a <= $b
+===      | Igual en valor y tipo     | $a === $b
+!==      | Diferente en valor o tipo | $a !== $b
+
+4. Operadores Lógicos
+(Para combinar condiciones)
+Operador | Significado | Ejemplo
+&& o and | Y (AND)     | $a && $b
+`        |             | oor`
+!        | No (NOT)    | !$a
+
+5. Operador de Concatenación
+(Unir textos)
+Operador | Significado       | Ejemplo
+.        | Concatenar textos | $nombre . " " . $apellido
+
+Ejemplo:
+<?php
+$nombre = "Juan";
+$apellido = "Pérez";
+echo $nombre . " " . $apellido; // Resultado: Juan Pérez
+?>
+
+TIPS
+
+1. No olvidar el servidor
+PHP no se ejecuta directamente en el navegador. Siempre debe pasar por 
+un servidor local como XAMPP o WAMP.
+
+2. Siempre abrir y cerrar el PHP correctamente
+<?php
+// Código PHP aquí
+?>
+
+3. Cuidado con los errores de tipeo
+PHP es sensible si olvidas un ; al final de una línea.
+echo "Hola" // Incorrecto, falta punto y coma
+echo "Hola"; // Correcto
+
+4. Comentar el código
+// Este es un comentario de una sola línea
+/*
+Este es un comentario
+de varias líneas
+*/
+
+Actividad Autónoma 
+Objetivo de Aprendizaje:
+- Comprender mejor el manejo de formularios en PHP.
+- Aprender a trabajar con condiciones (if, switch).
+- Validar entradas de usuarios.
+- Resolver un problema real (venta/cobro).
+
+Contexto:
+Un pequeño negocio familiar de frutas quiere tener una calculadora web para saber 
+cuánto debe cobrar según los kilos que vende. Cada fruta tiene un precio distinto por kilo.
+
+Precios por kilo:
+Manzana: $1200
+Plátano: $1000
+Naranja: $800
+
+Crea una página web en PHP donde:
+- El usuario pueda elegir una fruta (Manzana, Plátano o Naranja) desde un menú desplegable.
+- El usuario ingrese los kilos que desea comprar.
+- Al hacer clic en "Calcular", se debe mostrar el valor total a pagar.
+
+Requisitos:
+- Usar formulario HTML (<form>).
+- Usar método POST.
+- Validar que el número de kilos sea mayor que 0.
+- Mostrar mensajes de error claros si se elige una fruta inválida o si los kilos son 0 o negativos.
+
+El diseño puede ser básico (no es prioridad ahora).
+
+Entrega:
+1. Un archivo venta_frutas.php.
+2. Funcional en servidor local (XAMPP o WAMP) y servidor en internet.
+
+-->

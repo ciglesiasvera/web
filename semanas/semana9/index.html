@@ -32,7 +32,193 @@
               </ul>
             </nav>
           </header>
-          <h2>Pronto</h2>
+          <main>
+    <h2>Semana 9: AJAX/JSON y APIs</h2>
+
+    <!-- Clase 1 -->
+    <section>
+        <h2>Sesión 1: Fundamentos de AJAX/JSON con fetch()</h2>
+        <h3>1. Conceptos clave</h3>
+        <ul>
+            <li><strong>AJAX:</strong> Técnica para enviar y recibir datos sin recargar la página.</li>
+            <li><strong>JSON:</strong> Formato de intercambio de datos, fácil de leer y escribir.</li>
+            <li><strong>fetch():</strong> API de JavaScript para hacer peticiones HTTP.</li>
+        </ul>
+        <h3>2. Demo: Cargar datos de API pública</h3>
+        <p>Usaremos <code>JSONPlaceholder</code> (https://jsonplaceholder.typicode.com/) para obtener lista de usuarios.</p>
+        <pre><code>fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response =&gt; response.json())
+  .then(data =&gt; {
+    const output = document.getElementById('demo-output');
+    data.forEach(user =&gt; {
+      const li = document.createElement('li');
+      li.textContent = `${user.name} (${user.email})`;
+      output.appendChild(li);
+    });
+  })
+  .catch(err =&gt; console.error(err));</code></pre>
+        <p>HTML donde se mostrará:</p>
+        <pre><code>&lt;ul id="demo-output" class="demo-output"&gt;&lt;/ul&gt;</code></pre>
+
+        <h3>3. Actividad práctica</h3>
+        <p>En parejas, modifiquen la demo para:</p>
+        <ol>
+            <li>Mostrar en una tabla: Nombre, Email y Ciudad.</li>
+            <li>Agregar un campo de búsqueda que filtre por nombre.</li>
+        </ol>
+    </section>
+
+    <!-- Clase 2 -->
+    <section>
+        <h2>Sesión 2: Sistema de comentarios en tiempo real y JSON.parse()</h2>
+        <h3>1. Introducción y repaso</h3>
+        <ul>
+            <li>Repaso rápido de <code>fetch()</code> y <code>response.json()</code>.</li>
+            <li>Qué es <code>JSON.parse()</code> y para qué sirve.</li>
+        </ul>
+
+        <h3>2. Ejercicio guiado: Comentarios en tiempo real (90 min)</h3>
+        <p>Construiremos un mini sistema de comentarios usando frontend y PHP backend.</p>
+        <h4>Frontend (index.html):</h4>
+        <pre><code>&lt;form id="comment-form"&gt;
+  &lt;input type="text" id="author" placeholder="Tu nombre" required&gt;
+  &lt;textarea id="text" placeholder="Tu comentario" required&gt;&lt;/textarea&gt;
+  &lt;button&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;
+&lt;div id="comments" class="comments-list"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+const form = document.getElementById('comment-form');
+const commentsDiv = document.getElementById('comments');
+form.addEventListener('submit', e =&gt; {
+  e.preventDefault();
+  const data = { author: form.author.value, text: form.text.value };
+  fetch('save_comment.php', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(res =&gt; res.text())
+  .then(json =&gt; {
+    const comment = JSON.parse(json);  // uso de JSON.parse()
+    const div = document.createElement('div');
+    div.innerHTML = `&lt;strong&gt;${comment.author}&lt;/strong&gt;: ${comment.text}`;
+    commentsDiv.prepend(div);
+    form.reset();
+  });
+});
+&lt;/script&gt;</code></pre>
+        <h4>Backend (save_comment.php):</h4>
+        <pre><code>&lt;?php
+// Leer JSON enviado
+$input = file_get_contents('php://input');
+$data = json_decode($input, true);
+// Guardar en archivo (simple)
+$comments = [];
+if (file_exists('comments.json')) {
+  $comments = json_decode(file_get_contents('comments.json'), true);
+}
+$comments[] = $data;
+file_put_contents('comments.json', json_encode($comments));
+// Devolver último comentario
+echo json_encode($data);
+?&gt;</code></pre>
+
+        <h3>3. Actividad práctica</h3>
+        <p>Divídanse en grupos de 3 y mejoren el sistema:</p>
+        <ul>
+            <li>Mostrar todos los comentarios al cargar la página.</li>
+            <li>Agregar fecha y hora al comentario.</li>
+            <li>Estilizar con CSS.</li>
+        </ul>
+    </section>
+     <!-- Revisión de Bootstrap -->
+    <section id="bootstrap-review">
+        <h2>Revisión de Bootstrap</h2>
+        <h3>1. Introducción</h3>
+        <p>Bootstrap es un framework de CSS y JavaScript que facilita crear sitios web responsivos y con estilo. Aprenderemos los conceptos básicos, siguiendo <a href="https://www.w3schools.com/bootstrap4/" target="_blank">W3Schools Bootstrap 4</a>.</p>
+
+        <h3>2. Cómo incluir Bootstrap</h3>
+        <pre><code>&lt;!-- CSS de Bootstrap --&gt;
+&lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"&gt;
+
+&lt;!-- JS de Bootstrap y dependencias --&gt;
+&lt;script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"&gt;&lt;/script&gt;</code></pre>
+
+        <h3>3. Sistema de Grid</h3>
+        <p>Bootstrap usa un grid de 12 columnas. Divide tu diseño en <code>.container</code>, <code>.row</code> y <code>.col-*</code>:</p>
+        <pre><code>&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-md-4"&gt;Columna 1&lt;/div&gt;
+    &lt;div class="col-md-4"&gt;Columna 2&lt;/div&gt;
+    &lt;div class="col-md-4"&gt;Columna 3&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+        <h3>4. Componentes Básicos</h3>
+        <ul>
+            <li><strong>Botones:</strong> <code>&lt;button class="btn btn-primary btn-lg"&gt;Click Aquí&lt;/button&gt;</code></li>
+            <li><strong>Tarjetas:</strong>
+                <pre><code>&lt;div class="card" style="width: 18rem;"&gt;
+  &lt;img src="ruta/imagen.jpg" class="card-img-top" alt="..."&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h5 class="card-title"&gt;Título de la tarjeta&lt;/h5&gt;
+    &lt;p class="card-text"&gt;Descripción breve.&lt;/p&gt;
+    &lt;a href="#" class="btn btn-primary"&gt;Acción&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </li>
+            <li><strong>Navbar Responsive:</strong>
+                <pre><code>&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
+  &lt;a class="navbar-brand" href="#"&gt;MiSitio&lt;/a&gt;
+  &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"&gt;
+    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="collapse navbar-collapse" id="navbarNav"&gt;
+    &lt;ul class="navbar-nav"&gt;
+      &lt;li class="nav-item active"&gt;&lt;a class="nav-link" href="#"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Perfil&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+            </li>
+        </ul>
+
+        <h3>5. Utilidades de Espaciado y Texto</h3>
+        <p>Classes rápidas para márgenes y padding:</p>
+        <ul>
+            <li><code>m-*</code> (márgenes), <code>p-*</code> (padding): <code>mt-3</code>, <code>px-2</code>.</li>
+            <li>Clases de texto: <code>text-center</code>, <code>text-muted</code>, <code>font-weight-bold</code>.</li>
+        </ul>
+
+        <h3>6. Actividad Práctica</h3>
+        <ol>
+            <li>Crear una página de perfil usando grid y una tarjeta de Bootstrap.</li>
+            <li>Agregar la navbar responsive al inicio de la página.</li>
+            <li>Usar clases de utilidades (<code>m-</code>, <code>p-</code>, <code>text-</code>) para mejorar el diseño.</li>
+        </ol>
+    </section>
+    <!-- Actividades Autónomas -->
+    <section>
+        <h2>Actividades Autónomas</h2>
+        <h3>1. Integrar clima vía OpenWeatherMap API</h3>
+        <p>Usa tu <code>API key</code> y fetch() para mostrar temperatura y descripción del clima:</p>
+        <pre><code>fetch(`https://api.openweathermap.org/data/2.5/weather?q=Santiago&appid=TU_API_KEY&units=metric`)
+  .then(r =&gt; r.json())
+  .then(data =&gt; console.log(data));</code></pre>
+        <h3>2. Investigar RESTful APIs</h3>
+        <p>Visita <a href="https://apis-chile.readme.io/reference/welcome" target="_blank">APIS-Chile</a> y responde:</p>
+        <ul>
+            <li>¿Qué recursos ofrece?</li>
+            <li>¿Qué métodos HTTP usa cada endpoint?</li>
+            <li>¿Cómo se estructuran URLs y parámetros?</li>
+        </ul>
+        <p>Elabora un breve informe (1 página) y preséntalo en la próxima clase.</p>
+    </section>
+</div>
+</main>
         <footer>
             <p>© 2025 Diseño y Desarrollo Web + IA - TEC UCT - Docente: Cristian Iglesias Vera - cristian.iglesias@uct.cl</p>
         </footer>

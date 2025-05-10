@@ -1,0 +1,166 @@
+<!--
+Clase: Manipulación del DOM y Eventos con Javascript
+
+Objetivo de la clase:
+- Entender qué es el DOM y cómo manipularlo.
+- Crear una galería de imágenes interactiva.
+- Programar un pequeño juego de adivinar el número.
+- Integrar eventos para que las páginas web respondan a las acciones del usuario.
+
+1. Introducción al DOM: Document Object Model
+¿Qué es el DOM?
+El DOM es como un "mapa" de una página web.
+Cada cosa que se escribe en HTML (etiquetas, texto, imágenes) se convierte en un nodo o elemento del DOM.
+
+Método	¿Qué hace?
+getElementById()	Busca por ID
+querySelector()	Busca por selector CSS
+createElement()	Crea un nuevo elemento
+appendChild()	Agrega un elemento hijo
+removeChild()	Elimina un elemento hijo
+
+Cuando usamos JavaScript, se puede:
+- Leer esos elementos.
+- Cambiarlos.
+- Agregar nuevos.
+- Quitar los que ya no se necesitan.
+
+Ejemplo básico:
+html:
+<p id="saludo">Hola, bienvenido a mi página.</p>
+<button onclick="cambiarSaludo()">Haz clic aquí</button>
+
+javascript:
+function cambiarSaludo() {
+  const parrafo = document.getElementById('saludo');
+  parrafo.textContent = '¡Has cambiado el saludo!';
+}
+
+Explicación:
+-> document.getElementById('saludo'): Busca el elemento con el ID "saludo".
+-> .textContent: Cambia el texto dentro de ese elemento.
+
+------------------------------------------------------------------------
+
+2. Integración de Eventos en Javascript
+¿Qué es un evento?
+Un evento es algo que pasa en la página:
+El usuario hace clic, pasa el mouse por encima, escribe en un cuadro de texto, etc.
+
+¿Cómo se escucha un evento?
+Se puede usar "addEventListener" para "escuchar" estos eventos.
+
+Ejemplo:
+
+html:
+<button id="miBoton">Presióname</button>
+
+javascript:
+const boton = document.getElementById('miBoton');
+
+boton.addEventListener('click', function() {
+  alert('¡Me presionaste!');
+});
+
+Explicación:
+-> Primero seleccionamos el botón.
+-> Después le decimos: "Cuando te hagan clic, ejecuta esta función".
+
+------------------------------------------------------------------------
+
+3. Demo Práctica: Galería de Imágenes
+Objetivo:
+Crear una galería donde, que al hacer clic en una miniatura, se muestre la imagen grande.
+
+html:
+<h2>Galería de Imágenes</h2>
+<img id="imagenPrincipal" src="https://via.placeholder.com/400" alt="Imagen principal" width="400">
+<div>
+  <img src="https://via.placeholder.com/100/0000FF" class="miniatura" width="100">
+  <img src="https://via.placeholder.com/100/FF0000" class="miniatura" width="100">
+  <img src="https://via.placeholder.com/100/00FF00" class="miniatura" width="100">
+</div>
+
+javascript:
+const miniaturas = document.querySelectorAll('.miniatura');
+const imagenPrincipal = document.getElementById('imagenPrincipal');
+
+miniaturas.forEach(function(miniatura) {
+  miniatura.addEventListener('click', function() {
+    imagenPrincipal.src = miniatura.src;
+  });
+});
+
+Explicación:
+-> Se seleccionan todas las miniaturas.
+-> Por cada miniatura, se crea un "escuchador" de clics.
+-> Cuando se hace clic, se cambia la imagen principal por la de la miniatura.
+
+------------------------------------------------------------------------
+
+4. Ejercicio: Juego "Adivina el Número"
+Objetivo:
+Crear un juego donde la computadora elige un número al azar, para tratar de adivinarlo.
+
+html:
+<h2>Juego: Adivina el Número</h2>
+<p>Estoy pensando en un número entre 1 y 10. ¿Cuál crees que es?</p>
+<input type="number" id="adivinanza" min="1" max="10">
+<button onclick="verificarNumero()">Adivinar</button>
+<p id="resultado"></p>
+
+javascript:
+const numeroSecreto = Math.floor(Math.random() * 10) + 1;
+
+function verificarNumero() {
+  const adivinanza = parseInt(document.getElementById('adivinanza').value);
+  const resultado = document.getElementById('resultado');
+
+  if (adivinanza === numeroSecreto) {
+    resultado.textContent = '¡Correcto! Adivinaste el número.';
+  } else if (adivinanza < numeroSecreto) {
+    resultado.textContent = 'Muy bajo. Intenta de nuevo.';
+  } else {
+    resultado.textContent = 'Muy alto. Intenta de nuevo.';
+  }
+}
+
+Explicación:
+-> Se genera un número al azar del 1 al 10.
+-> El usuario ingresa un número y se hace la comparación.
+-> Se muestra un mensaje según la respuesta.
+
+------------------------------------------------------------------------
+
+5. Actividades Finales (Refuerzo)
+
+Actividad 1:
+Agregar más imágenes a la galería y probar que funcionen correctamente.
+
+Actividad 2:
+Mejorar el juego "Adivina el número" para que:
+- Le dé al jugador 3 intentos.
+- Cuando se terminen los intentos, muestre el número secreto.
+
+Actividad 3:
+- Crear un botón extra que, cuando se presione, reinicie el juego.
+
+Tips:
+- Usar la consola del navegador para ver errores y practicar.
+- Probar y experimentar cambiando los textos, imágenes y estilos para personalizar los ejercicios.
+
+------------------------------------------------------------------------
+
+6. Guía rápida: Atajos para desarrolladores
+
+- F12: Abrir las herramientas del desarrollador.
+- Ctrl + Shift + I (Cmd + Option + I en Mac): Abrir herramientas del desarrollador.
+- Ctrl + Shift + C: Activar el selector de elementos.
+- Ctrl + R: Recargar la página.
+- Ctrl + Shift + R: Recarga la página ignorando la caché.
+- Ctrl + + / -: Zoom in / Zoom out.
+- Ctrl + 0: Resetear el zoom.
+
+Consejo: Explorar la pestaña "Console" para ver mensajes y errores.
+
+-->
