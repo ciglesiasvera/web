@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="../../assets/imgs/icon.png">
+  <title>Clase Semana 8 - PHP y MySQL</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../../assets/css/semanas/semana9/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Desarrollo y Diseño Web + IA</h1>
+        <nav>
+          <ul>
+            <li><a href="../../../index.html">Inicio</a></li>
+            <li>
+              <a href="#">Semana 8 ▾</a>
+              <ul>
+                <li><a href="../../semana8/index.html">Resumen Semana 8</a></li>
+                <li><a href="../../semana8/blog.html">Blog CMS</a></li>
+                <li><a href="../../semana8/create.html">Crear Post</a></li>
+                <li><a href="../../semana8/list.html">Ver Posts</a></li>
+                <li><a href="../../semana8/login.html">Login</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">Semana 9 ▾</a>
+              <ul>
+                  <li><a href="../index.html">Resumen Semana 9</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Semana 10</a></li>
+          </ul>
+        </nav>
+      </header>
+    <main>
+ 
+  <div class="container">
+    <div class="card shadow-lg mb-4">
+      <div class="card-body text-center">
+        <h1 class="card-title mb-4">Busca tu Pokémon</h1>
+        <div class="form-group text-center">
+          <label for="pokemonName" class="h4 d-block mb-3">Nombre del Pokémon (ej: pikachu, bulbasaur, 1, 2, ...):</label>
+          <div class="d-flex justify-content-center">
+            <input type="text" id="pokemonName" class="form-control form-control-lg w-50" placeholder="Ingresa el nombre o id">
+          </div>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+          <button class="btn btn-primary btn-lg mx-auto" onclick="buscarPokemon()" style="width: 200px;">
+            <i class="fas fa-search me-2"></i> Buscar Pokémon
+          </button>
+        </div>
+        <br>
+      </div>
+    </div>
+    <div id="resultado" class="card shadow-lg mt-4"></div>
+  </div>
+
+  <script>
+  // Función asincrónica para buscar un Pokémon usando la API
+  async function buscarPokemon() {
+    const nombre = document.getElementById('pokemonName').value.toLowerCase().trim();
+    const resultado = document.getElementById('resultado');
+    resultado.innerHTML = '';
+
+    if (!nombre) {
+      resultado.innerHTML = '<div class="alert alert-warning">Por favor, ingresa un nombre o id válido.</div>';
+      return;
+    }
+
+    try {
+      const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`);
+      if (!res.ok) throw new Error('Pokémon no encontrado');
+
+      const data = await res.json();
+      const tipos = data.types.map(t => t.type.name).join(', ');
+      const habilidades = data.abilities.map(a => a.ability.name).join(', ');
+
+      // Se genera lka respuesta con los datos consumidos desde la pokeapi
+      resultado.innerHTML = `
+        <div class="card text-center mx-auto" style="width: 90%;">
+          <!-- Imagen centrada del Pokémon -->
+          <div class="text-center mt-3">
+            <img src="${data.sprites.other['official-artwork'].front_default}" alt="${data.name}" class="img-fluid" style="max-width: 500px; height: auto;">
+          </div>
+          
+          <!-- Cuerpo de la tarjeta -->
+          <div class="card-body">
+            <h4 class="card-title">${data.name.toUpperCase()}</h4>
+            <p><strong>Tipo:</strong> ${tipos}</p>
+            <p><strong>Habilidades:</strong> ${habilidades}</p>
+          </div>
+        </div>
+      `;
+    } catch (error) {
+      resultado.innerHTML = `<div class="alert alert-danger">${error.message}</div>`;
+    }
+  }
+</script>
+
+</main>
+  <footer class="site-footer">
+    <p>© 2025 Diseño y Desarrollo Web + IA - TEC UCT - Docente: Cristian Iglesias Vera - cristian.iglesias@uct.cl</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/js/bootstrap.bundle.min.js" defer></script>
+</body>
+</html>

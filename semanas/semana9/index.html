@@ -20,14 +20,19 @@
                 <li>
                   <a href="#">Semana 8 ▾</a>
                   <ul>
-                    <li><a href="../semana8/index.html">PHP y MySQL</a></li>
+                    <li><a href="../semana8/index.html">Resumen Semana 8</a></li>
                     <li><a href="../semana8/blog.html">Blog CMS</a></li>
                     <li><a href="../semana8/create.html">Crear Post</a></li>
                     <li><a href="../semana8/list.html">Ver Posts</a></li>
                     <li><a href="../semana8/login.html">Login</a></li>
                   </ul>
                 </li>
-                <li><a href="#">Semana 9</a></li>
+                <li>
+                  <a href="#">Semana 9 ▾</a>
+                  <ul>
+                      <li><a href="../semana9/api/pokeapi.html">API Ejemplo</a></li>
+                  </ul>
+                </li>
                 <li><a href="#">Semana 10</a></li>
               </ul>
             </nav>
@@ -203,19 +208,20 @@ echo json_encode($data);
     <!-- Actividades Autónomas -->
     <section>
         <h2>Actividades Autónomas</h2>
-        <h3>1. Integrar clima vía OpenWeatherMap API</h3>
+        <h3>1. Integrar clima vía OpenWeatherMap API (5 décimas)</h3>
         <p>Usa tu <code>API key</code> y fetch() para mostrar temperatura y descripción del clima:</p>
         <pre><code>fetch(`https://api.openweathermap.org/data/2.5/weather?q=Santiago&appid=TU_API_KEY&units=metric`)
   .then(r =&gt; r.json())
   .then(data =&gt; console.log(data));</code></pre>
-        <h3>2. Investigar RESTful APIs</h3>
+        <h3>2. Investigar RESTful APIs (2 décimas)</h3>
         <p>Visita <a href="https://apis-chile.readme.io/reference/welcome" target="_blank">APIS-Chile</a> y responde:</p>
         <ul>
             <li>¿Qué recursos ofrece?</li>
             <li>¿Qué métodos HTTP usa cada endpoint?</li>
             <li>¿Cómo se estructuran URLs y parámetros?</li>
         </ul>
-        <p>Elabora un breve informe (1 página) y preséntalo en la próxima clase.</p>
+        <p>* Sube ambas tareas a tu servidor, una página para consumir la API de OpenWeather y elabora un breve informe 
+          (1 página). Envía el link a cristian.iglesias@uct.cl, con el asusnto "Actividad Autónoma Semana 9 - Tu Nombre - Tu Sección" antes de la próxima clase.</p>
     </section>
 </div>
 </main>
