@@ -3,19 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../../assets/imgs/icon.png">
   <title>Clase: Introducción a HTML5</title>
   <link rel="stylesheet" href="../../assets/css/semanas/semana2/style.css">
 </head>
 <body>
   <header>
-    <h1>Clase: Introducción a HTML5</h1>
+    <h1>Desarrollo y Diseño Web + IA</h1>
     <nav>
       <ul>
         <li><a href="../../index.html">Inicio</a></li>
+        <li>
+          <a href="#">Semana 1 ▾</a>
+          <ul>
+            <li><a href="../semana1/index.html">Resumen Semana 1</a></li>
+            <li><a href="../semana1/imagenes.html">Imagen de Ejmemplo</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Semana 2 ▾</a>
+          <ul>
+            <li><a href="index.html">Resumen Semana 2</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Semana 3 ▾</a>
+          <ul>
+            <li><a href="../semana3/index.html">Resumen Semana 3</a></li>
+            <li><a href="../semana3/htmltags.html">HTML Tags</a></li>
+            <li><a href="../semana3/selectorescss.html">Selectores CSS</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </header>
-
   <main>
     <section>
       <h2>Objetivos de la Clase</h2>
@@ -90,6 +111,41 @@
         </code></pre>
       </aside>
     </section>
+
+    <section>
+      <h2>Más Conceptos Clave de HTML y Buenas Prácticas</h2>
+
+      <h3>Tipos de Etiquetas en HTML</h3>
+      <ul>
+        <li><strong>Estructurales:</strong> <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>.</li>
+        <li><strong>De contenido:</strong> <code>&lt;p&gt;</code>, <code>&lt;h1&gt;...&lt;h6&gt;</code>, <code>&lt;div&gt;</code>, <code>&lt;span&gt;</code>.</li>
+        <li><strong>De medios:</strong> <code>&lt;img&gt;</code>, <code>&lt;audio&gt;</code>, <code>&lt;video&gt;</code>.</li>
+        <li><strong>De formularios:</strong> <code>&lt;form&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, <code>&lt;select&gt;</code>.</li>
+        <li><strong>Semánticas:</strong> <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;footer&gt;</code>.</li>
+      </ul>
+
+      <h3>Validación de HTML</h3>
+      <p>Para asegurar que nuestro código esté correctamente escrito, es recomendable usar herramientas como el <a href="https://validator.w3.org/" target="_blank">W3C Validator</a>. Esto ayuda a prevenir errores de estructura y mejora la compatibilidad entre navegadores.</p>
+
+      <h3>Estilos CSS: En línea, Internos y Externos</h3>
+      <ul>
+        <li><strong>Estilo en línea:</strong> Dentro de una etiqueta. Ej: <code>&lt;p style="color:red;"&gt;Texto&lt;/p&gt;</code></li>
+        <li><strong>Estilo interno:</strong> Dentro de <code>&lt;style&gt;</code> en el <code>&lt;head&gt;</code>.</li>
+        <li><strong>Estilo externo:</strong> En un archivo .css vinculado con <code>&lt;link rel="stylesheet" href="estilo.css"&gt;</code></li>
+      </ul>
+
+      <h3>Buenas Prácticas de Accesibilidad y Semántica</h3>
+      <ul>
+        <li>Usar etiquetas semánticas mejora la accesibilidad para personas con discapacidad.</li>
+        <li>Incluir atributos <code>alt</code> en imágenes para usuarios con lectores de pantalla.</li>
+        <li>Mantener una estructura jerárquica clara con encabezados <code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code>.</li>
+        <li>Usar <code>&lt;label&gt;</code> en formularios para asociar correctamente texto con campos.</li>
+      </ul>
+
+      <h3>Ejercicio Sugerido</h3>
+      <p>Crear una estructura similar a la de un periódico digital, usando etiquetas semánticas como <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code> y <code>&lt;footer&gt;</code>, aplicando estilos básicos y validando el código en el W3C Validator.</p>
+    </section>
+
 
     <section>
       <h2>Actividades Prácticas</h2>

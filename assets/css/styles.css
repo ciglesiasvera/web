@@ -7,17 +7,17 @@ body {
   h1 {
     font-size: 2em;
     margin-top: 1em;
-    margin-left: 36%;
+    margin-left: 35%;
     color: #009688;
   }
-  
+
  .carousel {
     background-color: rgba(240, 240, 240, 0.3); 
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
     transform: rotateX(-20deg) translateY(-70px);
     transform-style: preserve-3d;
     perspective: 800px;

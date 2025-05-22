@@ -1,27 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="icon" href="../../assets/imgs/icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <link rel="icon" href="../../assets/imgs/icon.png"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <title>Clase: Introducción a HTML5</title>
-  <link rel="stylesheet" href="../../assets/css/semanas/semana1/style.css">
+  <link rel="stylesheet" href="../../assets/css/semanas/semana1/style.css" />
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
   <header>
-    <h1>Desarrollo y Diseño Web + IA</h1>
+    <h1 class="mb-0">Desarrollo y Diseño Web + IA</h1>
     <nav>
       <ul>
         <li><a href="../../index.html">Inicio</a></li>
-        <li><a href="../semana2/index.html">Semana 2</a></li>
+        <li>
+          <a href="#" role="button">Semana 1 ▾</a>
+          <ul>
+            <li><a href="imagenes.html">Imagen de Ejemplo</a></li>
+            <li><a href="diagnostico.html" target="_blank">Evaluación de DIagnóstico</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Semana 2 ▾</a>
+          <ul>
+            <li><a href="../semana2/index.html">Resumen Semana 2</a></li>
+            <li><a href="../semana2/semana2.html">Conceptos</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </header>
-    <img src="../../assets/imgs/semanas/semana1/gato.jpg" alt="Gato" class="img-centrada">
-    <footer>
-        <p>&copy; 2025 Diseño y Desarrollo Web + IA - TEC UCT - Docente: Cristian Iglesias Vera - cristian.iglesias@uct.cl</p>
-    </footer>
-        <script src="" async defer></script>
-    </body>
+  <main class="container my-4">
+    <div class="text-center">
+      <img src="../../assets/imgs/tec-uct.png" alt="Logo TEC UCT" class="img-fluid mb-4" style="max-width: 180px;" />
+    </div>
+    <div class="card mb-4 shadow">
+      <div class="card-body">
+        <h2 class="card-title text-center">¡Bienvenidos al curso!</h2>
+        <p class="card-text">
+          Este curso te invita a sumergirte en el mundo del diseño y desarrollo web con el respaldo de herramientas de Inteligencia Artificial. Durante 17 semanas exploraremos HTML5, CSS3, JavaScript, PHP, MySQL, frameworks como Bootstrap y la integración con tecnologías de IA.
+        </p>
+        <p>Este curso tributa a las competencias de <strong>creatividad, innovación y desarrollo de software</strong>, y te invito a vivirlo con seriedad, responsabilidad y también con entusiasmo.</p>
+        <p>Contarás con mi guía y acompañamiento constante en todo lo que sea necesario y atingente al ramo.</p>
+      </div>
+    </div>
+    <div class="row text-center mb-4">
+      <div class="col-md-4 mt-3 mt-md-0">
+        <div class="card border-warning">
+          <div class="card-header bg-warning text-dark">Clases Presenciales</div>
+          <div class="card-body">
+            <p class="card-text">Sesiones prácticas donde exploramos herramientas como Visual Studio Code, GitHub, DevTools y frameworks, todo orientado a proyectos aplicados.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mt-3 mt-md-0">
+        <div class="card border-primary">
+          <div class="card-header bg-primary text-white">Actividades Mixtas</div>
+          <div class="card-body">
+            <p class="card-text">Desde presentaciones, talleres grupales y ejercicios colaborativos. Aquí demostrarás tus habilidades integradas y resolución de problemas reales.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card border-success">
+          <div class="card-header bg-success text-white">Actividades Autónomas</div>
+          <div class="card-body">
+            <p class="card-text">Investiga, practica y entrega tus tareas autónomas al correo indicado. Cada aporte te otorgará <strong>décimas</strong> que pueden mejorar tu nota.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-info mt-4 text-center">
+      <strong>Importante:</strong> La semana 16 estará dedicada a evaluaciones pendientes y la semana 17 al examen final del curso.
+    </div>
+  </main>
+  <footer class="mt-auto">
+    <p>&copy; 2025 Diseño y Desarrollo Web + IA - TEC UCT - Docente: Cristian Iglesias Vera - cristian.iglesias@uct.cl</p>
+  </footer>
+</body>
 </html>
