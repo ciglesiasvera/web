@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="../../assets/imgs/icon.png">
+  <title>Clase Semana 8 - PHP y MySQL</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../assets/css/semanas/semana10/style.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Desarrollo y Diseño Web + IA</h1>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Inicio</a></li>
+        <li>
+            <a href="#">Semana 7 ▾</a>
+            <ul>
+                <li><a href="../semana7/index.html">Resumen Semana 7</a></li>
+                <li><a href="../semana7/frontend/formulario.html.html">Formulario Ejemplo</a></li>
+            </ul>
+        </li>
+        <li>
+          <a href="#">Semana 8 ▾</a>
+          <ul>
+            <li><a href="frontend/blog.html">Blog CMS</a></li>
+            <li><a href="simple-blog/index.html">Blog Simple</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Semana 9 ▾</a>
+          <ul>
+            <li><a href="../semana9/index.html">Resumen Semana 9</a></li>
+            <li><a href="../semana9/api/patentes-chile.html">API Ejemplo</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Semana 10 ▾</a>
+          <ul>
+            <li><a href="../semana10/postman.html">Postman</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Resumen Semana 10</h2>
+
+    <section id="portafolio">
+        <h1>Mis Proyectos</h1>
+        <div class="contenedor-proyectos" id="contenedor"></div>
+    </section>
+  
+
+  <section id="ejercicio-api-bd">
+  <h2>Ejercicio: Conectando tu Portafolio con una Base de Datos</h2>
+  <p>
+    En este ejercicio aprenderás a conectar tu portafolio con una base de datos usando PHP y MySQL. Este ejemplo es la base de lo que tendrás que aplicar en tu <strong>proyecto final del portafolio personal</strong>. 
+  </p>
+  <ol>
+    <li>
+      <h3>Paso 1: Crear la base de datos y la tabla</h3>
+      <p>Abre <strong>phpMyAdmin</strong> y ejecuta el siguiente código SQL para crear la base de datos <code>portafolio</code> y la tabla <code>proyectos</code>:</p>
+      <pre><code class="language-sql">
+CREATE DATABASE portafolio;
+
+USE portafolio;
+
+CREATE TABLE proyectos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100),
+  imagen VARCHAR(255),
+  descripcion TEXT,
+  url_github VARCHAR(255),
+  url_produccion VARCHAR(255)
+);
+
+INSERT INTO proyectos (nombre, imagen, descripcion, url_github, url_produccion) VALUES
+('Calculadora Web', 'img/proyecto1.png', 'Una calculadora simple hecha en JavaScript.', 'https://github.com/usuario/calculadora', 'https://usuario.github.io/calculadora'),
+('Blog Personal', 'img/proyecto2.jpg', 'Un blog hecho con HTML, CSS y PHP.', 'https://github.com/usuario/blog', '');
+      </code></pre>
+      <p><strong>Qué hace esto:</strong> Crea la base, la tabla y dos proyectos de ejemplo para que puedas probar tu API.</p>
+    </li>
+
+    <li>
+      <h3>Paso 2: Crear el archivo <code>db.php</code></h3>
+      <p>Crea un nuevo archivo llamado <code>db.php</code> en tu proyecto y copia este código:</p>
+      <pre><code class="language-php">
+&lt;?php
+$host = "localhost";
+$usuario = "root";
+$contrasena = "";
+$base_datos = "portafolio";
+
+// Crear la conexión
+$conn = new mysqli($host, $usuario, $contrasena, $base_datos);
+
+// Verificar si hay error de conexión
+if ($conn-&gt;connect_error) {
+    die("Conexión fallida: " . $conn-&gt;connect_error);
+}
+?&gt;
+      </code></pre>
+      <p><strong>Qué hace esto:</strong> Conecta PHP con la base de datos. Si algo sale mal, muestra un mensaje de error.</p>
+    </li>
+
+    <li>
+      <h3>Paso 3: Crear el archivo <code>api.php</code></h3>
+      <p>Crea otro archivo en tu proyecto llamado <code>api.php</code> y copia el siguiente código:</p>
+      <pre><code class="language-php">
+&lt;?php
+header('Content-Type: application/json');
+include 'db.php';
+
+$sql = "SELECT * FROM proyectos";
+$resultado = $conn-&gt;query($sql);
+
+$proyectos = [];
+
+if ($resultado-&gt;num_rows &gt; 0) {
+    while($fila = $resultado-&gt;fetch_assoc()) {
+        $proyectos[] = $fila;
+    }
+}
+
+echo json_encode($proyectos);
+?&gt;
+      </code></pre>
+      <p><strong>Qué hace esto:</strong> Lee todos los proyectos desde la base de datos y los convierte en JSON para que puedan ser usados en el sitio web.</p>
+    </li>
+  </ol>
+
+  <h3>Recordatorio Final</h3>
+  <p>
+    Este ejercicio es fundamental para tu proyecto final del portafolio personal. Allí deberás mostrar tus proyectos desde una base de datos, usando una API como esta. ¡Asegúrate de entenderlo bien y practicarlo en clases!
+  </p>
+</section>
+</main>
+
+<footer>
+    <p>© 2025 Diseño y Desarrollo Web + IA - TEC UCT - Docente: Cristian Iglesias Vera - cristian.iglesias@uct.cl</p>
+</footer>
+
+<script>
+// Cargamos los proyectos desde la API usando JavaScript
+fetch('api.php')
+  .then(response => response.json())
+  .then(proyectos => {
+    const contenedor = document.getElementById('contenedor');
+    proyectos.forEach(proyecto => {
+      const tarjeta = document.createElement('div');
+      tarjeta.className = 'tarjeta';
+      tarjeta.innerHTML = `
+        <img src="${proyecto.imagen}" alt="${proyecto.nombre}">
+        <h2>${proyecto.nombre}</h2>
+        <p>${proyecto.descripcion}</p>
+        <p><a href="${proyecto.url_github}" target="_blank">GitHub</a></p>
+        ${proyecto.url_produccion ? `<p><a href="${proyecto.url_produccion}" target="_blank">Ver en producción</a></p>` : ''}
+      `;
+      contenedor.appendChild(tarjeta);
+    });
+  })
+  .catch(error => console.error('Error cargando la API:', error));
+</script>
+
+</body>
+</html>
