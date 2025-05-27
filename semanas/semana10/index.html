@@ -142,6 +142,105 @@ echo json_encode($proyectos);
 </section>
 </main>
 
+<section id="post-api-crear" style="margin-top: 60px;">
+  <h2>Clase práctica: Crear un proyecto desde la API con método POST</h2>
+
+  <p>
+    Ahora que ya sabes leer los proyectos desde la base de datos con <code>GET</code>, es momento de aprender a <strong>crear nuevos proyectos</strong> usando el método <code>POST</code>. Así vas a poder agregar datos sin entrar a la base directamente.
+  </p>
+
+  <h3>Paso 1: Agrega este código a <code>api.php</code></h3>
+  <p>Vamos a modificar nuestro archivo <code>api.php</code> para que acepte el método <code>POST</code> y guarde nuevos proyectos en la base de datos:</p>
+
+  <pre><code class="language-php">
+&lt;?php
+header('Content-Type: application/json');
+include 'db.php';
+
+$metodo = $_SERVER['REQUEST_METHOD'];
+
+if ($metodo == 'GET') {
+    $sql = "SELECT * FROM proyectos";
+    $resultado = $conn-&gt;query($sql);
+    $proyectos = [];
+
+    if ($resultado-&gt;num_rows &gt; 0) {
+        while($fila = $resultado-&gt;fetch_assoc()) {
+            $proyectos[] = $fila;
+        }
+    }
+    echo json_encode($proyectos);
+
+} elseif ($metodo == 'POST') {
+    $data = json_decode(file_get_contents("php://input"), true);
+
+    $nombre = $data['nombre'];
+    $imagen = $data['imagen'];
+    $descripcion = $data['descripcion'];
+    $url_github = $data['url_github'];
+    $url_produccion = $data['url_produccion'];
+
+    $sql = "INSERT INTO proyectos (nombre, imagen, descripcion, url_github, url_produccion)
+            VALUES ('$nombre', '$imagen', '$descripcion', '$url_github', '$url_produccion')";
+
+    if ($conn-&gt;query($sql) === TRUE) {
+        echo json_encode(["mensaje" =&gt; "Proyecto creado correctamente"]);
+    } else {
+        echo json_encode(["error" =&gt; "Error al crear el proyecto"]);
+    }
+}
+?&gt;
+  </code></pre>
+
+  <h3>Paso 2: Probar el método POST con Postman</h3>
+  <p>Sigue estos pasos para enviar un proyecto nuevo usando Postman:</p>
+  <ol>
+    <li>Abre Postman y crea una nueva petición.</li>
+    <li>Elige el método <strong>POST</strong>.</li>
+    <li>En la URL escribe: <code>http://localhost/proyectos-api-db/api.php</code></li>
+    <li>Haz clic en la pestaña <strong>Body</strong> &gt; selecciona <strong>raw</strong> &gt; y luego elige <code>JSON</code>.</li>
+    <li>Escribe el siguiente ejemplo en el cuerpo de la petición:</li>
+  </ol>
+
+  <pre><code class="language-json">
+{
+  "nombre": "Portafolio Web",
+  "imagen": "img/portafolio.png",
+  "descripcion": "Mi primer portafolio hecho con HTML y CSS.",
+  "url_github": "https://github.com/usuario/portafolio",
+  "url_produccion": "https://usuario.github.io/portafolio"
+}
+  </code></pre>
+
+  <p>Luego haz clic en <strong>Send</strong> y deberías recibir una respuesta como esta:</p>
+  <pre><code>
+{
+  "mensaje": "Proyecto creado correctamente"
+}
+  </code></pre>
+
+  <h3>¿Qué estás haciendo aquí?</h3>
+  <ul>
+    <li>Estás enviando datos desde Postman a tu API.</li>
+    <li>La API los recibe usando el método <code>POST</code>.</li>
+    <li>PHP guarda los datos nuevos en la base de datos.</li>
+    <li>¡Así se crea un nuevo proyecto desde el backend!</li>
+  </ul>
+
+  <h3>Actividad para la clase</h3>
+  <ol>
+    <li>Crea al menos 2 nuevos proyectos usando el método POST y Postman.</li>
+    <li>Verifica que aparezcan correctamente con el método GET.</li>
+    <li>Guarda una captura de pantalla de la petición y la respuesta.</li>
+  </ol>
+
+  <h3>Importante</h3>
+  <p>
+    Este método de crear proyectos será clave en tu <strong>proyecto final de portafolio personal</strong>. Deberás usar una API que no solo muestre, sino también permita agregar tus proyectos en tiempo real.
+  </p>
+</section>
+
+
 <footer>
     <p>© 2025 Diseño y Desarrollo Web + IA - TEC UCT - Docente: Cristian Iglesias Vera - cristian.iglesias@uct.cl</p>
 </footer>
