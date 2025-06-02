@@ -10,7 +10,7 @@ $result = $conn->query("SELECT * FROM proyectos ORDER BY created_at DESC");
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="icon" href="../../assets/imgs/icon.png">
-  <title>Clase Semana 8 - PHP y MySQL</title>
+  <title>Clase Semana 12 - Ejemplo CRUD</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="../../assets/css/semanas/semana10/style.css">
   <!-- Bootstrap CSS -->
