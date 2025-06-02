@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="../../assets/imgs/icon.png">
+  <title>Clase Semana 8 - PHP y MySQL</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../assets/css/semanas/semana10/style.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Desarrollo y Diseño Web + IA</h1>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Inicio</a></li>
+        <li>
+          <a href="#">Semana 9 ▾</a>
+          <ul>
+            <li><a href="../semana9/index.html">Resumen Semana 9</a></li>
+            <li><a href="../semana9/api/patentes-chile.html">API Ejemplo</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Semana 10 ▾</a>
+          <ul>
+            <li><a href="../semana10/postman.html">Postman</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Semana 12 ▾</a>
+          <ul>
+            <li><a href="../semana12/index.html">CRUD</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Resumen Semana 12</h2>
+  <section>
+  <h1>Semana 12: CRUD Completo en PHP para un Portafolio</h1>
+
+  <p>Esta semana vamos a crear un sistema CRUD completo (Crear, Leer, Actualizar y Eliminar) usando PHP puro, MySQL, Visual Studio Code y XAMPP. El CRUD permitirá a los usuarios registrar proyectos en su portafolio con los siguientes campos:</p>
+
+  <ul>
+    <li><strong>Título</strong></li>
+    <li><strong>Descripción</strong> (máximo 200 palabras)</li>
+    <li><strong>URL de GitHub</strong></li>
+    <li><strong>URL del proyecto en producción</strong></li>
+    <li><strong>Imagen del proyecto</strong></li>
+  </ul>
+
+  <h2>Estructura del Proyecto</h2>
+  <pre><code>/portafolio_crud
+├── db.php
+├── login.php
+├── logout.php
+├── index.php
+├── add.php
+├── edit.php
+├── delete.php
+├── auth.php
+├── uploads/
+├── css/
+│   └── styles.css
+└── sql/
+    └── portafolio.sql
+  </code></pre>
+
+  <h2>Script SQL (sql/portafolio.sql)</h2>
+  <pre><code>CREATE DATABASE portafolio_db;
+USE portafolio_db;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL,
+  password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE proyectos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  titulo VARCHAR(100) NOT NULL,
+  descripcion TEXT NOT NULL,
+  url_github VARCHAR(255),
+  url_produccion VARCHAR(255),
+  imagen VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Usuario de prueba (usuario: admin, contraseña: 123456)
+INSERT INTO users (username, password) VALUES ('admin', MD5('123456'));
+  </code></pre>
+
+  <h2>Conexión a la base de datos (db.php)</h2>
+  <pre><code>&lt;?php
+$host = "localhost";
+$db = "portafolio_db";
+$user = "root";
+$pass = "";
+
+$conn = new mysqli($host, $user, $pass, $db);
+if ($conn-&gt;connect_error) {
+  die("Error de conexión: " . $conn-&gt;connect_error);
+}
+?&gt;
+  </code></pre>
+
+  <h2>Autenticación de Usuario</h2>
+
+  <h3>login.php</h3>
+  <pre><code>&lt;?php
+session_start();
+include 'db.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $username = $_POST['username'];
+  $password = md5($_POST['password']);
+
+  $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+  $result = $conn-&gt;query($sql);
+
+  if ($result-&gt;num_rows === 1) {
+    $_SESSION['user'] = $username;
+    header("Location: index.php");
+  } else {
+    echo "Credenciales incorrectas.";
+  }
+}
+?&gt;
+
+&lt;form method="post"&gt;
+  &lt;input type="text" name="username" placeholder="Usuario" required&gt;&lt;br&gt;
+  &lt;input type="password" name="password" placeholder="Contraseña" required&gt;&lt;br&gt;
+  &lt;button type="submit"&gt;Iniciar Sesión&lt;/button&gt;
+&lt;/form&gt;
+  </code></pre>
+
+  <h3>logout.php</h3>
+  <pre><code>&lt;?php
+session_start();
+session_destroy();
+header("Location: login.php");
+?&gt;
+  </code></pre>
+
+  <h3>auth.php</h3>
+  <pre><code>&lt;?php
+session_start();
+if (!isset($_SESSION['user'])) {
+  header("Location: login.php");
+  exit;
+}
+?&gt;
+  </code></pre>
+
+  <h2>CRUD</h2>
+
+  <h3>index.php – Listado de proyectos</h3>
+  <pre><code>&lt;?php
+include 'auth.php';
+include 'db.php';
+$result = $conn-&gt;query("SELECT * FROM proyectos ORDER BY created_at DESC");
+?&gt;
+
+&lt;a href="add.php"&gt;+ Agregar Proyecto&lt;/a&gt; | &lt;a href="logout.php"&gt;Cerrar sesión&lt;/a&gt;
+&lt;h2&gt;Proyectos&lt;/h2&gt;
+&lt;?php while($row = $result-&gt;fetch_assoc()): ?&gt;
+  &lt;div&gt;
+    &lt;h3&gt;&lt;?= $row['titulo'] ?&gt;&lt;/h3&gt;
+    &lt;p&gt;&lt;?= $row['descripcion'] ?&gt;&lt;/p&gt;
+    &lt;img src="uploads/&lt;?= $row['imagen'] ?&gt;" width="150"&gt;&lt;br&gt;
+    &lt;a href="&lt;?= $row['url_github'] ?&gt;"&gt;GitHub&lt;/a&gt; |
+    &lt;a href="&lt;?= $row['url_produccion'] ?&gt;"&gt;Enlace&lt;/a&gt;&lt;br&gt;
+    &lt;a href="edit.php?id=&lt;?= $row['id'] ?&gt;"&gt;Editar&lt;/a&gt; |
+    &lt;a href="delete.php?id=&lt;?= $row['id'] ?&gt;" onclick="return confirm('¿Seguro?')"&gt;Eliminar&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;hr&gt;
+&lt;?php endwhile; ?&gt;
+  </code></pre>
+
+  <h3>add.php – Agregar proyecto</h3>
+  <pre><code>&lt;?php
+include 'auth.php';
+include 'db.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $titulo = $_POST['titulo'];
+  $descripcion = $_POST['descripcion'];
+  $url_github = $_POST['url_github'];
+  $url_produccion = $_POST['url_produccion'];
+
+  $imagen = $_FILES['imagen']['name'];
+  $tmp = $_FILES['imagen']['tmp_name'];
+  move_uploaded_file($tmp, "uploads/$imagen");
+
+  $sql = "INSERT INTO proyectos (titulo, descripcion, url_github, url_produccion, imagen) 
+          VALUES ('$titulo', '$descripcion', '$url_github', '$url_produccion', '$imagen')";
+
+  $conn-&gt;query($sql);
+  header("Location: index.php");
+}
+?&gt;
+
+&lt;form method="post" enctype="multipart/form-data"&gt;
+  &lt;input type="text" name="titulo" placeholder="Título" required&gt;&lt;br&gt;
+  &lt;textarea name="descripcion" maxlength="200" placeholder="Descripción (máx 200 palabras)" required&gt;&lt;/textarea&gt;&lt;br&gt;
+  &lt;input type="url" name="url_github" placeholder="URL GitHub"&gt;&lt;br&gt;
+  &lt;input type="url" name="url_produccion" placeholder="URL Producción"&gt;&lt;br&gt;
+  &lt;input type="file" name="imagen" required&gt;&lt;br&gt;
+  &lt;button type="submit"&gt;Guardar&lt;/button&gt;
+&lt;/form&gt;
+  </code></pre>
+
+  <h3>edit.php – Editar proyecto</h3>
+  <pre><code>&lt;?php
+include 'auth.php';
+include 'db.php';
+
+$id = $_GET['id'];
+$proyecto = $conn-&gt;query("SELECT * FROM proyectos WHERE id=$id")-&gt;fetch_assoc();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $titulo = $_POST['titulo'];
+  $descripcion = $_POST['descripcion'];
+  $url_github = $_POST['url_github'];
+  $url_produccion = $_POST['url_produccion'];
+
+  if ($_FILES['imagen']['name']) {
+    $imagen = $_FILES['imagen']['name'];
+    move_uploaded_file($_FILES['imagen']['tmp_name'], "uploads/$imagen");
+    $img_sql = ", imagen='$imagen'";
+  } else {
+    $img_sql = "";
+  }
+
+  $sql = "UPDATE proyectos SET titulo='$titulo', descripcion='$descripcion', url_github='$url_github', url_produccion='$url_produccion' $img_sql WHERE id=$id";
+  $conn-&gt;query($sql);
+  header("Location: index.php");
+}
+?&gt;
+
+&lt;form method="post" enctype="multipart/form-data"&gt;
+  &lt;input type="text" name="titulo" value="&lt;?= $proyecto['titulo'] ?&gt;" required&gt;&lt;br&gt;
+  &lt;textarea name="descripcion"&gt;&lt;?= $proyecto['descripcion'] ?&gt;&lt;/textarea&gt;&lt;br&gt;
+  &lt;input type="url" name="url_github" value="&lt;?= $proyecto['url_github'] ?&gt;"&gt;&lt;br&gt;
+  &lt;input type="url" name="url_produccion" value="&lt;?= $proyecto['url_produccion'] ?&gt;"&gt;&lt;br&gt;
+  &lt;input type="file" name="imagen"&gt;&lt;br&gt;
+  &lt;button type="submit"&gt;Actualizar&lt;/button&gt;
+&lt;/form&gt;
+  </code></pre>
+
+  <h3>delete.php – Eliminar proyecto</h3>
+  <pre><code>&lt;?php
+include 'auth.php';
+include 'db.php';
+$id = $_GET['id'];
+
+$conn-&gt;query("DELETE FROM proyectos WHERE id=$id");
+header("Location: index.php");
+?&gt;
+  </code></pre>
+
+  <h2>Campos del Proyecto</h2>
+  <table border="1" cellpadding="5">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Tipo</th>
+        <th>Descripción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>titulo</td>
+        <td>Texto</td>
+        <td>Nombre del proyecto</td>
+      </tr>
+      <tr>
+        <td>descripcion</td>
+        <td>Texto largo</td>
+        <td>Máximo 200 palabras</td>
+      </tr>
+      <tr>
+        <td>url_github</td>
+        <td>URL</td>
+        <td>Enlace al repositorio GitHub</td>
+      </tr>
+      <tr>
+        <td>url_produccion</td>
+        <td>URL</td>
+        <td>Enlace al proyecto online</td>
+      </tr>
+      <tr>
+        <td>imagen</td>
+        <td>Archivo</td>
+        <td>Imagen referencial del proyecto</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+</main>
+<footer>
+    <p>© 2025 Diseño y Desarrollo Web + IA - TEC UCT - Docente: Cristian Iglesias Vera - cristian.iglesias@uct.cl</p>
+</footer>   
+
+</body>
+</html>
