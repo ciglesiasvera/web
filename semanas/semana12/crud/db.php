@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
-$db = "portafolio_db";
-$user = "root";
-$pass = "";
+$db = "cristian_iglesias_db1";
+$user = "cristian_iglesias";
+$pass = "cristian_iglesias2025";
 
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
