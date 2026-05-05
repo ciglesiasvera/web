@@ -1,3 +1,41 @@
+#portafolio {
+  max-width: 900px;
+  margin: auto;
+}
+
+#portafolio h1 {
+  text-align: center;
+  color: #333;
+}
+
+.contenedor-proyectos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.tarjeta {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  width: 250px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.tarjeta img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.tarjeta a {
+  text-decoration: none;
+  color: #007bff;
+}
+
 body {
     font-family: 'Segoe UI', sans-serif;
     background-color: #f4f7f9;
@@ -276,4 +314,9 @@ nav ul li {
     .codigo-ejemplo {
       font-size: 0.9em;
     }
+}
+
+#ejercicio-api-bd {
+    background-color: #f8f8f8;
+    margin-top: 1em;
 }

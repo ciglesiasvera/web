@@ -39,4 +39,4 @@ const animate = () => {
 };
 gsap.ticker.add(animate);
 
-gsap.config({ trialWarn: false });
+gsap.config({ trialWarn: false }); 
