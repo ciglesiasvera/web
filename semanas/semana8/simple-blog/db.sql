@@ -1,5 +1,5 @@
-CREATE DATABASE blogdb;
-USE blogdb;
+CREATE DATABASE simple_blogdb;
+USE simple_blogdb;
 
 CREATE TABLE posts (
   id INT AUTO_INCREMENT PRIMARY KEY,
